@@ -4,7 +4,7 @@ import axios from 'axios'
 const authActions = {
     async login({commit}, payload){
         try{
-
+            commit('setLoading', true)
             const response = await axios.post(`${process.env.VUE_APP_BASE_URL}/login`, payload, {
                 headers : {
                     'Accept': 'application/vnd.api+json',

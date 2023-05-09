@@ -7,15 +7,15 @@ const authModule = {
     state: {
         login : {
             token : null,
-            loading : true,
+            loading : false,
             error : false,
             message : null
         },
         isTokenValid : false,
         registerErrors : {
             errors : {},
-            loading : true,
-            success : true
+            loading : false,
+            success : null
         }
     },
     getters: authGetters,

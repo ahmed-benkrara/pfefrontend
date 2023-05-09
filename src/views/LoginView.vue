@@ -1,36 +1,39 @@
 <template>
-    <div class="bg-white w-full min-h-screen sm:backgroundsm md:backgroundmd lg:backgroundlg font-thin flex lg:flex-row sm:flex-col py-8 gap-y-10">
-        <div class="flex-1 lg:flex lg:justify-center lg:items-center">
-            <div class="sm:mx-auto sm:w-[90%] md:w-[80%] lg:w-[80%] h-fit px-4">
-                <h1 class="text-white font-semibold sm:text-[26px] md:text-[40px]">Welcome To {{ websitename }}</h1>
-                <p class="text-white mt-3 text-[16px]">{{ websitename }} provides innovative ERP modules for businesses of all sizes. We offer customizable solutions to streamline operations, enhance customer experience, and maximize potential. Our expert team provides top-notch support and guidance to help you achieve your goals. Join us today to take your business to the next level.</p>
+    <div>
+        <LoaderComponent v-if="getLoading"/>
+        <div class="bg-white w-full min-h-screen sm:backgroundsm md:backgroundmd lg:backgroundlg font-thin flex lg:flex-row sm:flex-col py-8 gap-y-10">
+            <div class="flex-1 lg:flex lg:justify-center lg:items-center">
+                <div class="sm:mx-auto sm:w-[90%] md:w-[80%] lg:w-[80%] h-fit px-4">
+                    <h1 class="text-white font-semibold sm:text-[26px] md:text-[40px]">Welcome To {{ websitename }}</h1>
+                    <p class="text-white mt-3 text-[16px]">{{ websitename }} provides innovative ERP modules for businesses of all sizes. We offer customizable solutions to streamline operations, enhance customer experience, and maximize potential. Our expert team provides top-notch support and guidance to help you achieve your goals. Join us today to take your business to the next level.</p>
+                </div>
             </div>
-        </div>
-        <div class="flex-1 lg:flex lg:justify-center lg:items-center">
-            <div class="sm:mx-auto sm:w-[90%] md:w-[80%] lg:w-[80%] h-fit px-8 py-10 rounded-lg bg-[white]">
-                <h1 class="text-2xl font-medium text-gray-700">Hello There,</h1>
-
-                <p class="mt-4 text-gray-500">
-                    We're glad to see you! Kindly provide your login information to access your customized ERP module hub.
-                </p>
-
-                <div class="mt-6">
-                    <div class="flex-1 mt-6">
-                        <label class="block mb-2 text-sm text-gray-600">Email</label>
-                        <input type="email" v-model="credentials.email" id="email" placeholder="Email" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
+            <div class="flex-1 lg:flex lg:justify-center lg:items-center">
+                <div class="sm:mx-auto sm:w-[90%] md:w-[80%] lg:w-[80%] h-fit px-8 py-10 rounded-lg bg-[white]">
+                    <h1 class="text-2xl font-medium text-gray-700">Hello There,</h1>
+    
+                    <p class="mt-4 text-gray-500">
+                        We're glad to see you! Kindly provide your login information to access your customized ERP module hub.
+                    </p>
+    
+                    <div class="mt-6">
+                        <div class="flex-1 mt-6">
+                            <label class="block mb-2 text-sm text-gray-600">Email</label>
+                            <input type="email" v-model="credentials.email" id="email" placeholder="Email" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
+                        </div>
+    
+                        <div class="flex-1 mt-6">
+                            <label class="block mb-2 text-sm text-gray-600">Password</label>
+                            <input type="password" v-model="credentials.password" id="password" placeholder="Password" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
+                        </div>
+                        <div class="flex-1 mt-6">
+                            <p @click="sendToRegister()" class="underline text-[black] cursor-pointer block w-fit" >You don't have an account ?</p>
+                        </div>
+    
+                        <button @click="log()" id="login" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#255de1] rounded-md focus:outline-none focus:ring focus:ring-[#255de1] focus:ring-opacity-50">
+                            Sign In
+                        </button>
                     </div>
-
-                    <div class="flex-1 mt-6">
-                        <label class="block mb-2 text-sm text-gray-600">Password</label>
-                        <input type="password" v-model="credentials.password" id="password" placeholder="Password" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
-                    </div>
-                    <div class="flex-1 mt-6">
-                        <p @click="sendToRegister()" class="underline text-[black] cursor-pointer block w-fit" >You don't have an account ?</p>
-                    </div>
-
-                    <button @click="log()" id="login" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#255de1] rounded-md focus:outline-none focus:ring focus:ring-[#255de1] focus:ring-opacity-50">
-                        Sign In
-                    </button>
                 </div>
             </div>
         </div>
@@ -41,6 +44,7 @@
 import { useHead } from '@vueuse/head'
 import router from '@/router'
 import { mapActions, mapGetters } from 'vuex'
+import LoaderComponent from '@/components/loading.vue'
 
 export default {
     name : 'HomeView',  
@@ -54,7 +58,7 @@ export default {
         }
     },
     computed : {
-        ...mapGetters('authModule',['getToken','getMessage']),
+        ...mapGetters('authModule',['getToken','getMessage', 'getLoading']),
     },
     methods:{
         sendToRegister(){
@@ -88,6 +92,9 @@ export default {
                 }
             }
         }
+    },
+    components : {
+        LoaderComponent
     },
     mounted() {
         this.websitename = process.env.VUE_APP_TITLE
