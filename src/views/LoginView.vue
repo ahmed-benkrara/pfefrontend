@@ -17,18 +17,18 @@
                 <div class="mt-6">
                     <div class="flex-1 mt-6">
                         <label class="block mb-2 text-sm text-gray-600">Email</label>
-                        <input type="email" id="email" placeholder="Email" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
+                        <input type="email" v-model="credentials.email" id="email" placeholder="Email" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
                     </div>
 
                     <div class="flex-1 mt-6">
                         <label class="block mb-2 text-sm text-gray-600">Password</label>
-                        <input type="password" id="password" placeholder="Password" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
+                        <input type="password" v-model="credentials.password" id="password" placeholder="Password" class="block w-full px-5 py-3 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 focus:outline-none focus:ring" />
                     </div>
                     <div class="flex-1 mt-6">
                         <p @click="sendToRegister()" class="underline text-[black] cursor-pointer block w-fit" >You don't have an account ?</p>
                     </div>
 
-                    <button id="login" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#255de1] rounded-md focus:outline-none focus:ring focus:ring-[#255de1] focus:ring-opacity-50">
+                    <button @click="log()" id="login" class="w-full px-6 py-3 mt-6 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-[#255de1] rounded-md focus:outline-none focus:ring focus:ring-[#255de1] focus:ring-opacity-50">
                         Sign In
                     </button>
                 </div>
@@ -40,17 +40,53 @@
 <script>
 import { useHead } from '@vueuse/head'
 import router from '@/router'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     name : 'HomeView',  
     data(){
         return{
             websitename : '',
+            credentials : {
+                email : '',
+                password : ''
+            }
         }
+    },
+    computed : {
+        ...mapGetters('authModule',['getToken','getMessage']),
     },
     methods:{
         sendToRegister(){
             router.push({ path : '/register' })
+        },
+        ...mapActions('authModule',['login']),
+        async log(){
+            if(this.validation()){
+                const formdata = new FormData()
+                formdata.append('email', this.credentials.email)
+                formdata.append('password', this.credentials.password)
+                await this.login(formdata)
+                if(this.getMessage){
+                    alert(this.getMessage)
+                }else{
+                    window.location.reload()
+                }
+            }
+        },
+        validation(){
+            var validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+            if(!validRegex.test(this.credentials.email)){
+                alert('Email isn\'t valid !')
+                return false
+            }else{
+                if(this.credentials.password.trim().length < 6){
+                    alert('Password should contain at least 6 characters !')
+                    return false
+                }else{
+                    return true
+                }
+            }
         }
     },
     mounted() {

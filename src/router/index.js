@@ -4,15 +4,18 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ForgotView from '../views/ForgotView.vue'
+import guest from '@/guards/guestGuard'
 
 const routes = [
   {
     path : '/login',
-    component : LoginView
+    component : LoginView,
+    beforeEnter : guest
   },
   {
     path : '/register',
-    component : RegisterView
+    component : RegisterView,
+    beforeEnter : guest
   },
   {
     path : '/forgot',

@@ -5,7 +5,18 @@ import authActions from './actions'
 const authModule = {
     namespaced : true,
     state: {
-        token : ''
+        login : {
+            token : null,
+            loading : true,
+            error : false,
+            message : null
+        },
+        isTokenValid : false,
+        registerErrors : {
+            errors : {},
+            loading : true,
+            success : true
+        }
     },
     getters: authGetters,
     mutations: authMutations,

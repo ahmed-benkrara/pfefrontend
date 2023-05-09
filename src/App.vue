@@ -1,6 +1,20 @@
 <template>
   <router-view/>
 </template>
+
+<script>
+import { mapActions } from 'vuex'
+
+export default {
+  methods: {
+    ...mapActions('authModule',['tokenFromLocalStorage'])
+  },
+  created(){
+    this.tokenFromLocalStorage()
+  }
+}
+</script>
+
 <style>
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
