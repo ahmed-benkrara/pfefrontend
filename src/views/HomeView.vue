@@ -1,6 +1,5 @@
 <template>
     <div>
-        hello from home view
     </div>
 </template>
 
