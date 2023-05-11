@@ -1,13 +1,15 @@
 <template>
-    <div>
-    </div>
+  <div>
+    <HomeHeader/>
+  </div>
 </template>
 
 <script>
 import { useHead } from '@vueuse/head'
+import HomeHeader from '@/components/client/HomeHeader.vue'
 
 export default {
-    name : 'HomeView',  
+    name : 'HomeView', 
     mounted() {
         useHead({
         title: `Home | ${process.env.VUE_APP_TITLE}`,
@@ -18,6 +20,9 @@ export default {
             },
         ],
         })
+    },
+    components: {
+      HomeHeader
     }
 }
 </script>

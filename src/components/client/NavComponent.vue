@@ -1,7 +1,14 @@
 <template>
-    <nav class="w-full py-[10px] px-[20px] font-inter flex justify-between items-center">
-        <h1 class="font-semibold text-[22px] cursor-pointer ">{{ title }}</h1>
-        <ul class="flex text-[16px]">
+    <div class="bg-black w-full py-[6px] px-4 sm:text-[10px] md:text-[15px] font-inter text-white text-center">
+        Welcome to our Online Store - Where Quality Meets Convenience!
+    </div>
+    <nav class="w-full sm:py-[14px] bg-re sm:px-[10px] md:py-[16px] md:px-[20px] font-inter flex justify-between items-center">
+        <div class="sm:flex lg:hidden">
+            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" src="@/assets/icons/mail.svg" alt="">
+            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" @click="showmenu()" src="@/assets/icons/menu.svg" alt="">
+        </div>
+        <h1 class="title font-semibold sm:text-[20px] md:text-[22px] cursor-pointer ">{{ title }}</h1>
+        <ul class="sm:hidden lg:flex text-[16px]">
             <li class="mx-2 cursor-pointer" >Home</li>
             <li class="mx-2 cursor-pointer" >Packages</li>
             <li class="mx-2 cursor-pointer" >Modules</li>
@@ -10,12 +17,39 @@
             <li class="mx-2 cursor-pointer" >Contact</li>
         </ul>
         <div class="flex text-[20px]">
-            <img class="block mx-2 min-w-[22px] w-[22px] cursor-pointer" src="@/assets/icons/cart.svg" alt="">
-            <div class="mx-2 cursor-pointer" >
-                <i class="fa-regular fa-user"></i>
+            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer cart" test="0" src="@/assets/icons/cart.svg" alt="">
+            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" src="@/assets/icons/heart.svg" alt="">
+            <div class="mx-2 relative">
+                <i class="cursor-pointer fa-regular fa-user" @click="toggle($event)"></i>
+                <ul class="topbar-link-wrapper font-poppins font-[300] text-[13px] tracking-[2px]">
+                    <li class="mb-[6px] cursor-pointer">Login</li>
+                    <li class=" cursor-pointer">Register</li>
+                </ul>
             </div>
         </div>
     </nav>
+    <div id="smnav" class="sm:text-[14px] md:text-[16px] py-[20px] px-[10px] lg:hidden sm:w-[250px] md:w-[400px] right-[-100%] top-0 h-full z-[10] fixed bg-white shadow-md">
+        <img @click="closemenu()" class="block close ml-auto mx-2 sm:w-[28px]  md:w-[30px] cursor-pointer" src="@/assets/icons/close.svg" alt="">
+        <ul class="font-poppins font-[300] tracking-[2px] mt-6">
+            <li class="mx-2 my-4 cursor-pointer" >Home</li>
+            <li class="mx-2 my-4 cursor-pointer" >Packages</li>
+            <li class="mx-2 my-4 cursor-pointer" >Modules</li>
+            <li class="mx-2 my-4 cursor-pointer" >Services</li>
+            <li class="mx-2 my-4" >
+                <div class="flex justify-between">
+                    <p>Features</p>
+                    <i class="text-[#656565] fa-solid fa-plus block" @click="toggleitem($event)"></i><!--minus-->
+                </div>
+                <ul class="pl-[16px] h-0 overflow-hidden">
+                    <li class="my-4 cursor-pointer">FAQs</li>
+                    <li class="mt-4 cursor-pointer">Privacy Policy</li>
+                </ul>
+            </li>
+            <li class="mx-2 my-4 cursor-pointer" >About Us</li>
+            <li class="mx-2 my-4 cursor-pointer" >Contact</li>
+        </ul>
+    </div>
+    
 </template>
 
 <script>
@@ -26,8 +60,155 @@ export default {
             title : ''
         }
     },
+    methods: {
+        showmenu(){
+            let nav = document.getElementById('smnav')
+            nav.classList.remove('navclose')
+            nav.classList.add('navopen')
+        },
+        closemenu(){
+            let nav = document.getElementById('smnav')
+            nav.classList.remove('navopen')
+            nav.classList.add('navclose')
+        },
+        toggle(e){
+            let next = e.target.nextElementSibling
+            if(next){
+                if(next.classList.contains('slidedown')){
+                    next.classList.remove('slidedown')
+                    next.classList.add('slideup')
+                }else{
+                    next.classList.remove('slideup')
+                    next.classList.add('slidedown')
+                }
+            }
+        },
+        toggleitem(e){
+            let item = e.target
+            let parent = item.parentElement
+            let target = parent.nextElementSibling
+            if(item.classList.contains('fa-plus')){
+                item.classList.remove('fa-plus')
+                item.classList.add('fa-minus')
+                target.classList.remove('up')
+                target.classList.add('down')
+            }else{
+                item.classList.remove('fa-minus')
+                item.classList.add('fa-plus')
+                target.classList.remove('down')
+                target.classList.add('up')
+            }
+        }
+    },
     mounted(){
         this.title = process.env.VUE_APP_TITLE
     }
 }
 </script>
+
+<style scoped>
+
+@media only screen and (max-width: 320px){
+    /* hide the page here with a message your device isn't supported */
+}
+
+.navopen{
+    animation: navopen 1s ease-in-out forwards;
+}
+
+@keyframes navopen{
+    from{
+        right: -100%;
+    }
+    to{
+        right:0;
+    }
+}
+
+.navclose{
+    animation: navclose 1s ease-in-out forwards;
+}
+
+@keyframes navclose{
+    from{
+        right: 0;
+    }
+    to{
+        right: -100%;
+    }
+}
+
+.topbar-link-wrapper {
+    background-color: #ffffff;
+    position: absolute;
+    right: 0;
+    padding: 0px 20px;
+    z-index: 9;
+    width: 120px;
+    text-align: left;
+    top: 40px;
+    overflow-y: hidden;
+    /* border: 1px solid #f0f0f2; */
+    @apply shadow-md;
+    height:0;
+}
+
+.slideup{
+    animation: slideup 500ms ease-in-out forwards;
+}
+
+@keyframes slideup{
+    from{
+        height: fit-content;
+        padding: 15px 20px;
+        display: block;
+    }
+    to{
+        height: 0;
+        padding: 0 20px;
+        display: none;
+    }
+}
+
+.slidedown{
+    animation: slidedown 500ms ease-in-out forwards;
+}
+
+@keyframes slidedown{
+    from{
+        height: 0;
+        padding: 0 20px;
+    }
+    to{
+        height: fit-content;
+        padding: 15px 20px;
+    }
+}
+
+.up{
+    animation: up 500ms ease-in-out forwards;
+}
+
+@keyframes up{
+    from{
+        height: fit-content;
+    }
+    to{
+        height: 0;
+    }
+}
+
+.down{
+    animation: down 500ms ease-in-out forwards;
+}
+
+@keyframes down{
+    from{
+        height: 0;
+    }
+    to{
+        height: fit-content;
+    }
+}
+
+</style>
