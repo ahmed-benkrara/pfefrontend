@@ -76,7 +76,7 @@ export default {
         },
     }, 
     mounted() {
-        setInterval(this.nextSlide, 5000);
+        //setInterval(this.nextSlide, 5000);
         AOS.init();
     }
 }

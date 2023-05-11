@@ -9,7 +9,7 @@
         </div>
         <h1 class="title font-semibold sm:text-[20px] md:text-[22px] cursor-pointer ">{{ title }}</h1>
         <ul class="sm:hidden lg:flex text-[16px]">
-            <li class="mx-2 cursor-pointer" >Home</li>
+            <li class="mx-2 cursor-pointer" ><router-link to="/">Home</router-link></li>
             <li class="mx-2 cursor-pointer" >Packages</li>
             <li class="mx-2 cursor-pointer" >Modules</li>
             <li class="mx-2 cursor-pointer" >Services</li>
@@ -22,8 +22,8 @@
             <div class="mx-2 relative">
                 <i class="cursor-pointer fa-regular fa-user" @click="toggle($event)"></i>
                 <ul class="topbar-link-wrapper font-poppins font-[300] text-[13px] tracking-[2px]">
-                    <li class="mb-[6px] cursor-pointer">Login</li>
-                    <li class=" cursor-pointer">Register</li>
+                    <li class="mb-[6px] cursor-pointer"><router-link to="/login">Login</router-link></li>
+                    <li class=" cursor-pointer"><router-link to="/register">register</router-link></li>
                 </ul>
             </div>
         </div>
@@ -31,10 +31,10 @@
     <div id="smnav" class="sm:text-[14px] md:text-[16px] py-[20px] px-[10px] lg:hidden sm:w-[250px] md:w-[400px] right-[-100%] top-0 h-full z-[10] fixed bg-white shadow-md">
         <img @click="closemenu()" class="block close ml-auto mx-2 sm:w-[28px]  md:w-[30px] cursor-pointer" src="@/assets/icons/close.svg" alt="">
         <ul class="font-poppins font-[300] tracking-[2px] mt-6">
-            <li class="mx-2 my-4 cursor-pointer" >Home</li>
-            <li class="mx-2 my-4 cursor-pointer" >Packages</li>
-            <li class="mx-2 my-4 cursor-pointer" >Modules</li>
-            <li class="mx-2 my-4 cursor-pointer" >Services</li>
+            <li class="mx-2 my-4 cursor-pointer">Home</li>
+            <li class="mx-2 my-4 cursor-pointer">Packages</li>
+            <li class="mx-2 my-4 cursor-pointer">Modules</li>
+            <li class="mx-2 my-4 cursor-pointer">Services</li>
             <li class="mx-2 my-4" >
                 <div class="flex justify-between">
                     <p>Features</p>

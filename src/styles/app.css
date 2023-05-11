@@ -6,27 +6,27 @@
 
 @layer base{
     .backgroundlg{
-        background-image: url('https://images.pexels.com/photos/3776190/pexels-photo-3776190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        background-image: url('https://images.pexels.com/photos/4872023/pexels-photo-4872023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         background-size: cover;
-        background-color: #1654ac9d;
+        background-color: rgba(0, 0, 0, 0.5);
         background-repeat: no-repeat;
-        background-position: center;
+        background-position: top;
         background-blend-mode: multiply;
     }
 
     .backgroundmd{
-        background-image: url('https://images.pexels.com/photos/3776190/pexels-photo-3776190.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+        background-image: url('https://images.pexels.com/photos/4872023/pexels-photo-4872023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         background-size: cover;
-        background-color: #1654ac9d;
+        background-color: rgba(0, 0, 0, 0.5);
         background-repeat: no-repeat;
         background-position: center;
         background-blend-mode: multiply;
     }
     
     .backgroundsm{
-        background-image: url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80');
+        background-image: url('https://images.pexels.com/photos/4872023/pexels-photo-4872023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         background-size: cover;
-        background-color: #1655acd8;
+        background-color: rgba(0, 0, 0, 0.5);
         background-repeat: no-repeat;
         background-position: center;
         background-blend-mode: multiply;

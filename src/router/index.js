@@ -7,16 +7,16 @@ import ForgotView from '../views/ForgotView.vue'
 import guest from '@/guards/guestGuard'
 
 const routes = [
-  {
-    path : '/login',
-    component : LoginView,
-    beforeEnter : guest
-  },
-  {
-    path : '/register',
-    component : RegisterView,
-    beforeEnter : guest
-  },
+  // {
+  //   path : '/login',
+  //   component : LoginView,
+  //   beforeEnter : guest
+  // },
+  // {
+  //   path : '/register',
+  //   component : RegisterView,
+  //   beforeEnter : guest
+  // },
   {
     path : '/forgot',
     component : ForgotView
@@ -33,7 +33,17 @@ const routes = [
       {
         path : 'home',
         component : HomeView
-      }
+      },
+      {
+        path : '/login',
+        component : LoginView,
+        beforeEnter : guest
+      },
+      {
+        path : '/register',
+        component : RegisterView,
+        beforeEnter : guest
+      },
     ]
   },
   // {
