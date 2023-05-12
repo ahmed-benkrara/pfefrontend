@@ -346,7 +346,8 @@ module.exports = {
       kodchasan: ['Kodchasan', 'sans-serif'],
       poppins: ['Poppins', 'sans-serif'],
       roboto: ['Roboto Slab', 'serif'],
-      inter : ['Inter', 'sans-serif']
+      inter : ['Inter', 'sans-serif'],
+      varela : ['Varela Round', 'sans-serif']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],

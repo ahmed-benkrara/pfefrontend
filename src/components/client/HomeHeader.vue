@@ -112,7 +112,6 @@ export default {
     }
 
     .filt{
-        
         mix-blend-mode: multiply;
     }
 
