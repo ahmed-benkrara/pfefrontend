@@ -1,12 +1,14 @@
 <template>
   <div>
     <HomeHeader/>
+    <OurFeatures/>
   </div>
 </template>
 
 <script>
 import { useHead } from '@vueuse/head'
 import HomeHeader from '@/components/client/HomeHeader.vue'
+import OurFeatures from '@/components/client/OurFeatures.vue'
 
 export default {
     name : 'HomeView', 
@@ -22,7 +24,7 @@ export default {
         })
     },
     components: {
-      HomeHeader
+      HomeHeader, OurFeatures
     }
 }
 </script>
