@@ -5,6 +5,9 @@
     <UniquePacks/>
     <QuoteSection/>
     <UniqueModules/>
+    <TopPacks/>
+    <TopModules/>
+    <OurServices/>
   </div>
 </template>
 
@@ -15,6 +18,9 @@ import OurFeatures from '@/components/client/OurFeatures.vue'
 import UniquePacks from '@/components/client/UniquePacks.vue'
 import QuoteSection from '@/components/client/QuoteSection.vue'
 import UniqueModules from '@/components/client/UniqueModules.vue'
+import OurServices from '@/components/client/OurServices.vue'
+import TopPacks from '@/components/client/TopPacks.vue'
+import TopModules from '@/components/client/TopModules.vue'
 
 export default {
     name : 'HomeView', 
@@ -30,7 +36,7 @@ export default {
         })
     },
     components: {
-      HomeHeader, OurFeatures, UniquePacks, QuoteSection, UniqueModules
+      HomeHeader, OurFeatures, UniquePacks, QuoteSection, UniqueModules, OurServices, TopPacks, TopModules
     }
 }
 </script>
