@@ -347,7 +347,8 @@ module.exports = {
       poppins: ['Poppins', 'sans-serif'],
       roboto: ['Roboto Slab', 'serif'],
       inter : ['Inter', 'sans-serif'],
-      varela : ['Varela Round', 'sans-serif']
+      varela : ['Varela Round', 'sans-serif'],
+      dm : ['DM Sans', 'sans-serif']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
