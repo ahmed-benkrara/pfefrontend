@@ -4,6 +4,7 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ForgotView from '../views/ForgotView.vue'
+import ContactView from '../views/ContactView.vue'
 import guest from '@/guards/guestGuard'
 
 const routes = [
@@ -43,6 +44,10 @@ const routes = [
         path : '/register',
         component : RegisterView,
         beforeEnter : guest
+      },
+      {
+        path : '/contact',
+        component : ContactView
       },
     ]
   },
