@@ -1,6 +1,6 @@
 <template>
     <!-- bg-[#eaeef2] -->
-    <footer class="w-full h-fit pt-14 pb-6 px-10 font-poppins bg-[#0c0716] text-white border-t-[1px]">
+    <footer class="w-full h-fit pt-14 pb-6 px-10 font-poppins text-white bg-black">
         <div data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="sm:block md:hidden my-4">
             <h1 class="title font-bold sm:text-[20px] md:text-[25px] cursor-pointer">{{ title }}</h1>
             <p class=" leading-5 mt-2 text-[14px] font-[500]">Streamline your business with our comprehensive ERP modules. Shop now for efficient management solutions on our eCommerce website.</p>

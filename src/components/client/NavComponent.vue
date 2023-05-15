@@ -14,7 +14,7 @@
             <li class="mx-2 cursor-pointer" >Modules</li>
             <li class="mx-2 cursor-pointer" >Services</li>
             <li class="mx-2 cursor-pointer" >About Us</li>
-            <li class="mx-2 cursor-pointer" >Contact</li>
+            <li class="mx-2 cursor-pointer" ><router-link to="/contact">Contact</router-link></li>
         </ul>
         <div class="flex text-[20px]">
             <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer cart" test="0" src="@/assets/icons/cart.svg" alt="">

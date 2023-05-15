@@ -1,7 +1,7 @@
 <template>
     <div>        
         <LoaderComponent v-if="getRegisterErrors.loading" />
-        <div class="bg-white w-full min-h-screen sm:backgroundsm md:backgroundmd lg:backgroundlg font-thin flex lg:flex-row sm:flex-col py-8 gap-y-10">
+        <div class="bg-white w-full min-h-screen sm:backgroundsm md:backgroundmd lg:backgroundlg font-thin flex lg:flex-row sm:flex-col sm:py-[100px] lg:py-8 gap-y-10">
             <div class="flex-1 lg:flex lg:justify-center lg:items-center">
                 <div class="sm:mx-auto sm:w-[90%] md:w-[80%] lg:w-[80%] h-fit px-4">
                     <h1 data-aos="zoom-in-up" data-aos-duration="800" data-aos-easing="ease-in-sine" class="text-white font-semibold sm:text-[26px] md:text-[40px]">Welcome To {{ websitename }}</h1>
