@@ -8,6 +8,8 @@
     <TopPacks/>
     <TopModules/>
     <OurServices/>
+    <SubscribeNews/>
+    <ClientFooter/>
   </div>
 </template>
 
@@ -21,6 +23,8 @@ import UniqueModules from '@/components/client/UniqueModules.vue'
 import OurServices from '@/components/client/OurServices.vue'
 import TopPacks from '@/components/client/TopPacks.vue'
 import TopModules from '@/components/client/TopModules.vue'
+import SubscribeNews from '@/components/client/SubscribeNews.vue'
+import ClientFooter from '@/components/client/ClientFooter.vue'
 
 export default {
     name : 'HomeView', 
@@ -36,7 +40,8 @@ export default {
         })
     },
     components: {
-      HomeHeader, OurFeatures, UniquePacks, QuoteSection, UniqueModules, OurServices, TopPacks, TopModules
+      HomeHeader, OurFeatures, UniquePacks, QuoteSection, UniqueModules, OurServices, TopPacks, TopModules, SubscribeNews,
+      ClientFooter
     }
 }
 </script>

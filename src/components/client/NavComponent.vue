@@ -7,7 +7,7 @@
             <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" src="@/assets/icons/mail.svg" alt="">
             <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" @click="showmenu()" src="@/assets/icons/menu.svg" alt="">
         </div>
-        <h1 class="title font-semibold sm:text-[20px] md:text-[22px] cursor-pointer ">{{ title }}</h1>
+        <h1 class="title font-semibold sm:text-[20px] md:text-[22px] cursor-pointer">{{ title }}</h1>
         <ul class="sm:hidden lg:flex text-[16px]">
             <li class="mx-2 cursor-pointer" ><router-link to="/">Home</router-link></li>
             <li class="mx-2 cursor-pointer" >Packages</li>
@@ -22,8 +22,8 @@
             <div class="mx-2 relative">
                 <i class="cursor-pointer fa-regular fa-user" @click="toggle($event)"></i>
                 <ul class="topbar-link-wrapper font-poppins font-[300] text-[13px] tracking-[2px]">
-                    <li class="mb-[6px] cursor-pointer"><router-link to="/login">Login</router-link></li>
-                    <li class=" cursor-pointer"><router-link to="/register">register</router-link></li>
+                    <li class="mb-[6px] cursor-pointer w-full"><router-link to="/login">Login</router-link></li>
+                    <li class=" cursor-pointer w-full"><router-link to="/register">register</router-link></li>
                 </ul>
             </div>
         </div>
