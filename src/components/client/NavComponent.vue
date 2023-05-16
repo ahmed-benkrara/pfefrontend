@@ -12,8 +12,8 @@
             <li class="mx-2 cursor-pointer" ><router-link to="/">Home</router-link></li>
             <li class="mx-2 cursor-pointer" ><router-link to="/packages">Packages</router-link></li>
             <li class="mx-2 cursor-pointer" ><router-link to="/modules">Modules</router-link></li>
-            <li class="mx-2 cursor-pointer" >Services</li>
-            <li class="mx-2 cursor-pointer" >About Us</li>
+            <li class="mx-2 cursor-pointer" ><router-link to="/home#services">Services</router-link></li>
+            <li class="mx-2 cursor-pointer" ><router-link to="/about">About Us</router-link></li>
             <li class="mx-2 cursor-pointer" ><router-link to="/contact">Contact</router-link></li>
         </ul>
         <div class="flex text-[20px]">

@@ -20,7 +20,7 @@ export default {
         })
 
         useHead({
-        title: `Packs | ${process.env.VUE_APP_TITLE}`,
+        title: `Packages | ${process.env.VUE_APP_TITLE}`,
         meta: [
             {
             name: 'description',

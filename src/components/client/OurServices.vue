@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="mt-[50px] object-cover w-full py-[100px] plx sm:px-4 md:px-[100px] lg:px-[150px] bg-[#0c0716] text-center text-white font-poppins">
+        <div id="services" class="mt-[50px] object-cover w-full py-[100px] plx sm:px-4 md:px-[100px] lg:px-[150px] bg-[#0c0716f5] text-center text-white font-poppins">
             <p data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="sm:text-[20px] md:text-[30px]">Our Services</p>
             <h1 data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="sm:text-[20px] md:text-[30px] mt-2 font-[200]">Unleash the Power of Integrated ERP Solutions for Smarter, Simpler, and More Profitable Business Operations.</h1>
             <div class="mt-[60px] w-full grid grid-cols-3 gap-x-4 gap-y-[40px]">
@@ -54,15 +54,14 @@
 </script>
 
 <style scoped>
-    /* .plx{
+    .plx{
         background-image: url('https://images.pexels.com/photos/8133879/pexels-photo-8133879.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
-        background-color: rgba(0, 0, 0, 0.247);
         background-blend-mode: multiply;
-        background-position: center;
-    } */
+        background-position: center; 
+    }
 
     .icon{
         @apply text-[35px] block mb-2;

@@ -7,6 +7,7 @@ import ForgotView from '../views/ForgotView.vue'
 import ContactView from '../views/ContactView.vue'
 import ModuleView from '../views/ModuleView.vue'
 import PacksView from '../views/PacksView.vue'
+import AboutView from '../views/AboutView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
@@ -61,6 +62,10 @@ const routes = [
         path : '/packages',
         component : PacksView
       },
+      {
+        path : '/about',
+        component : AboutView
+      },
     ]
   },
   // {
@@ -75,7 +80,18 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+  scrollBehavior(){
+    var link = window.location.href
+    if(link.indexOf('#') != -1){
+      var elm = document.getElementById(link.split('#')[1])
+      if(elm != undefined){
+        elm.scrollIntoView({
+          behavior:'smooth'
+        })
+      }
+    }
+  }
 })
 
 export default router

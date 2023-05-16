@@ -1,15 +1,15 @@
 <template>
-    <div class="w-full sm:h-[200px] md:h-[400px] plx flex justify-center items-center">
-        <div class="w-fit text-center text-white font-poppins">
-            <h1 class="sm:text-[35px] md:text-[40px] font-[500]">Our Packages</h1>
+    <div>
+        <div class="w-full sm:h-[400px] md:h-[500px] plx flex justify-center items-center">
+            <h1 class="w-fit text-white font-poppins sm:text-[35px] md:text-[40px] font-[500]">About Us</h1>
         </div>
-    </div>    
+    </div>
 </template>
 
 <script>
 
 export default {
-    name : 'PackHeader',
+    name : 'AboutHeader'
 }
 </script>
 

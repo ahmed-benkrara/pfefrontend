@@ -271,7 +271,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .plx{
         background-image: url('https://images.pexels.com/photos/4872023/pexels-photo-4872023.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         background-size: cover;

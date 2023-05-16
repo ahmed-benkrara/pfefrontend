@@ -1,6 +1,6 @@
 <template>
     <div class="mt-[30px] px-4">
-        <h1 data-aos="zoom-in-down" data-aos-duration="800" data-aos-easing="ease-in-sine" class="font-inter font-bold sm:text-[24px] sm:mb-3 md:text-[30px] text-center">We Provide <br/>Best Costumer Experiences.</h1>
+        <h1 data-aos="zoom-in-down" data-aos-duration="800" data-aos-easing="ease-in-sine" class="toremove font-inter font-bold sm:text-[24px] sm:mb-3 md:text-[30px] text-center">We Provide <br/>Best Costumer Experiences.</h1>
         <div class="w-full grid md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 max-w-[1317px] mx-auto">
             <div data-aos="zoom-in-right" data-aos-duration="800" data-aos-easing="ease-in-sine" class="flex items-center font-poppins mx-auto">
                 <div class="w-16 h-16 bg-[#f3f3f3] rounded-full flex items-center justify-center text-[20px] mr-4">
