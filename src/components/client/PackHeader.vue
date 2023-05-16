@@ -1,7 +1,7 @@
 <template>
     <div class="w-full sm:h-[200px] md:h-[400px] plx flex justify-center items-center">
         <div class="w-fit text-center text-white font-poppins">
-            <h1 class="sm:text-[35px] md:text-[40px] font-[500]">Our Modules</h1>
+            <h1 class="sm:text-[35px] md:text-[40px] font-[500]">Our Packages</h1>
         </div>
     </div>    
 </template>
@@ -9,7 +9,7 @@
 <script>
 
 export default {
-    name : 'ModuleHeader',
+    name : 'PackHeader',
 }
 </script>
 

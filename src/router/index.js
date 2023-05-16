@@ -6,6 +6,7 @@ import RegisterView from '../views/RegisterView.vue'
 import ForgotView from '../views/ForgotView.vue'
 import ContactView from '../views/ContactView.vue'
 import ModuleView from '../views/ModuleView.vue'
+import PacksView from '../views/PacksView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
@@ -55,6 +56,10 @@ const routes = [
       {
         path : '/modules',
         component : ModuleView
+      },
+      {
+        path : '/packages',
+        component : PacksView
       },
     ]
   },

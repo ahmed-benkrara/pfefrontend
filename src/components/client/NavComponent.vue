@@ -10,8 +10,8 @@
         <h1 class="title font-semibold sm:text-[20px] md:text-[22px] cursor-pointer">{{ title }}</h1>
         <ul class="sm:hidden lg:flex text-[16px]">
             <li class="mx-2 cursor-pointer" ><router-link to="/">Home</router-link></li>
-            <li class="mx-2 cursor-pointer" >Packages</li>
-            <li class="mx-2 cursor-pointer" >Modules</li>
+            <li class="mx-2 cursor-pointer" ><router-link to="/packages">Packages</router-link></li>
+            <li class="mx-2 cursor-pointer" ><router-link to="/modules">Modules</router-link></li>
             <li class="mx-2 cursor-pointer" >Services</li>
             <li class="mx-2 cursor-pointer" >About Us</li>
             <li class="mx-2 cursor-pointer" ><router-link to="/contact">Contact</router-link></li>

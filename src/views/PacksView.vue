@@ -1,7 +1,7 @@
 <template>
     <div>
-        <ModuleHeader/>
-        <ModuleCards/>
+        <PackHeader/>
+        <PackCards/>
     </div>
 </template>
 
@@ -9,18 +9,18 @@
 import { useHead } from '@vueuse/head'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import ModuleHeader from '@/components/client/ModuleHeader.vue'
-import ModuleCards from '@/components/client/ModuleCards.vue'
+import PackHeader from '@/components/client/PackHeader.vue'
+import PackCards from '@/components/client/PackCards.vue'
 
 export default {
-    name : 'ModuleView',
+    name : 'PacksView',
     mounted(){
         AOS.init({
             once : true
         })
 
         useHead({
-        title: `Modules | ${process.env.VUE_APP_TITLE}`,
+        title: `Packs | ${process.env.VUE_APP_TITLE}`,
         meta: [
             {
             name: 'description',
@@ -30,7 +30,12 @@ export default {
         })
     },
     components: {
-        ModuleHeader, ModuleCards
+        PackHeader, PackCards
     }
+
 }
 </script>
+
+<style>
+
+</style>
