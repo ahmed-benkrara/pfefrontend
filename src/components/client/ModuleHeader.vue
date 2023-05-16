@@ -5,8 +5,8 @@
         </div>
     </div>
     <div>
-        <div class="w-full h-fit py-16 sm:px-4 md:px-4 md:flex">
-            <div class="sm:w-full md:w-[20%] md:px-4 py-4">
+        <div class="w-full h-fit py-16 sm:px-[8px] md:px-4 md:flex">
+            <div class="sm:w-full md:w-[20%] md:pr-4 py-4">
                 <div class="space-y-2">
                     <details open class="overflow-hidden rounded border border-gray-300 [&_summary::-webkit-details-marker]:hidden">
                         <summary class="flex cursor-pointer items-center justify-between gap-2 bg-white p-4 text-gray-900 transition">
@@ -111,6 +111,12 @@
                         class="absolute right-0 w-48 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-10"
                         >
                         <p
+                            @click="sortBy('default')"
+                            class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                        >
+                            Default
+                        </p>
+                        <p
                             @click="sortBy('name')"
                             class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                         >
@@ -120,22 +126,28 @@
                             @click="sortBy('date')"
                             class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                         >
-                            Date
+                            Latest
                         </p>
                         <p
-                            @click="sortBy('price')"
+                            @click="sortBy('pricel')"
                             class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                         >
-                            Price
+                            Price Low to High
+                        </p>
+                        <p
+                            @click="sortBy('priceh')"
+                            class="cursor-pointer block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                        >
+                            Price High To Low
                         </p>
                         </div>
                     </div>
 
                 </div>
                 <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-x-2 lg:grid-cols-5">
-                    <div class="mt-4 overflow-hidden block sm:mx-auto md:mx-0 cursor-pointer">
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[220px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
@@ -149,9 +161,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 overflow-hidden block sm:mx-auto md:mx-0 cursor-pointer">
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[220px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                            <img class="filt sm:w-[150px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
@@ -165,9 +177,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 overflow-hidden block sm:mx-auto md:mx-0 cursor-pointer">
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[220px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                            <img class="filt sm:w-[150px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
@@ -181,9 +193,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 overflow-hidden block sm:mx-auto md:mx-0 cursor-pointer">
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[220px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                            <img class="filt sm:w-[150px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
@@ -197,9 +209,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 overflow-hidden block sm:mx-auto md:mx-0 cursor-pointer">
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[220px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                            <img class="filt sm:w-[150px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
@@ -213,9 +225,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 overflow-hidden block sm:mx-auto md:mx-0 cursor-pointer">
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[220px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                            <img class="filt sm:w-[150px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
@@ -229,9 +241,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-4 overflow-hidden block sm:mx-auto md:mx-0 cursor-pointer">
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[220px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                            <img class="filt sm:w-[150px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
@@ -245,7 +257,9 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
+                
             </div>
         </div>
     </div>
@@ -263,12 +277,23 @@ export default {
     },
     methods: {
         toggleDropdown() {
-            this.isDropdownOpen = !this.isDropdownOpen;
+            this.isDropdownOpen = !this.isDropdownOpen
         },
         sortBy(option) {
             console.log('Sorting by:', option);
             this.isDropdownOpen = false;
         }
+    },
+    mounted(){
+        const cards = document.querySelectorAll('.card');
+  
+        cards.forEach((card, index) => {
+            if (index % 2 === 0) {
+                card.classList.add('card-left');
+            } else {
+                card.classList.add('card-right');
+            }
+        })
     }
 }
 </script>
@@ -282,5 +307,13 @@ export default {
         background-color: rgba(0, 0, 0, 0.247);
         background-blend-mode: multiply;
         background-position: top;
+    }
+
+    .card-left{
+        @apply ml-auto;
+    }
+
+    .card-right{
+        @apply mr-auto;
     }
 </style>
