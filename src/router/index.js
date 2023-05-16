@@ -5,6 +5,9 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import ForgotView from '../views/ForgotView.vue'
 import ContactView from '../views/ContactView.vue'
+import ModuleView from '../views/ModuleView.vue'
+
+//Guards
 import guest from '@/guards/guestGuard'
 
 const routes = [
@@ -48,6 +51,10 @@ const routes = [
       {
         path : '/contact',
         component : ContactView
+      },
+      {
+        path : '/modules',
+        component : ModuleView
       },
     ]
   },
