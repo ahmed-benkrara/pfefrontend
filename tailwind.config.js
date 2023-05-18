@@ -348,7 +348,8 @@ module.exports = {
       roboto: ['Roboto Slab', 'serif'],
       inter : ['Inter', 'sans-serif'],
       varela : ['Varela Round', 'sans-serif'],
-      dm : ['DM Sans', 'sans-serif']
+      dm : ['DM Sans', 'sans-serif'],
+      rubik : ['Rubik', 'sans-serif']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],

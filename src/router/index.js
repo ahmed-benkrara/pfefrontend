@@ -8,6 +8,7 @@ import ContactView from '../views/ContactView.vue'
 import ModuleView from '../views/ModuleView.vue'
 import PacksView from '../views/PacksView.vue'
 import AboutView from '../views/AboutView.vue'
+import ModuleDetailsView from '../views/ModuleDetailsView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
@@ -65,6 +66,10 @@ const routes = [
       {
         path : '/about',
         component : AboutView
+      },
+      {
+        path : '/module/:id',
+        component : ModuleDetailsView
       },
     ]
   },
