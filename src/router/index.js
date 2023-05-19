@@ -9,6 +9,7 @@ import ModuleView from '../views/ModuleView.vue'
 import PacksView from '../views/PacksView.vue'
 import AboutView from '../views/AboutView.vue'
 import ModuleDetailsView from '../views/ModuleDetailsView.vue'
+import PackDetailsView from '../views/PackDetailsView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
@@ -70,6 +71,10 @@ const routes = [
       {
         path : '/module/:id',
         component : ModuleDetailsView
+      },
+      {
+        path : '/package/:id',
+        component : PackDetailsView
       },
     ]
   },
