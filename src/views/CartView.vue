@@ -1,13 +1,13 @@
 <template>
     <div>
-        <CartHeader/>
+        <!-- <CartHeader/> -->
         <CartBody/>
     </div>
 </template>
 
 <script>
 import { useHead } from '@vueuse/head'
-import CartHeader from '@/components/client/CartHeader.vue';
+/*import CartHeader from '@/components/client/CartHeader.vue';*/
 import CartBody from '@/components/client/CartBody.vue';
 
 export default {
@@ -24,7 +24,7 @@ export default {
         })
     },
     components: {
-        CartHeader, CartBody
+        /*CartHeader,*/ CartBody
     }
 }
 

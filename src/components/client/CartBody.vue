@@ -1,8 +1,10 @@
+
+
 <template>
     <div class="sm:px-1 md:px-4 my-8">
-        <h1 class="font-rubik sm:text-[20px] md:text-[25px] font-[500] sm:px-2 md:px-8">Your Cart</h1>
+        <h1 class="font-rubik sm:text-[20px] md:text-[25px] font-[500] sm:px-2 md:px-8">Shopping Cart</h1>
         <div class="w-full lg:flex lg:justify-between relative">
-            <div class="sm:w-full lg:w-[60%]">
+            <div class="sm:w-full lg:w-[calc(100%-340px)]">
                 <div class="w-full md:px-4 py-4 mt-4 flex justify-between">
                     <div class="flex font-varela w-fit">
                         <div class="flex">
@@ -179,44 +181,23 @@
                 </div>
             </div>
             
-            <div class="sm:hidden lg:block w-[35%] sticky top-0 right-0 h-fit px-8 py-[25px] font-rubik ml-6">
-                <h1 class="text-center text-[25px] font-[700]">Payment Methods</h1>
-                <div class="mt-[20px] flex items-center justify-between py-1">
-                    <p class="text-[14px]">Human Resource</p>
-                    <p class="text-[14px] font-[500]">$2000</p>
+            <div class="sm:hidden lg:block w-[280px] h-full bg-[#f5f5f5] px-8 py-[35px]">
+                <h1 class="font-[500] text-[17px] mb-6">Summary</h1>
+                <!-- text-[#cbcbcb] -->
+                <div class="w-full flex justify-between">
+                    <p class="text-[#bfbfbf] font-poppins font-[300] text-[13px]">Subtotal*</p>
+                    <p class="text-[black] font-poppins font-[400] text-[15px]">323$</p>
                 </div>
-                <div class="mt-[16px] flex items-center justify-between py-1">
-                    <p class="text-[14px]">Human Resource</p>
-                    <p class="text-[14px] font-[500]">$2000</p>
+                <div class="w-full flex justify-between mt-1">
+                    <p class="text-[#bfbfbf] font-poppins font-[300] text-[13px]">Shipping</p>
+                    <p class="text-[black] font-poppins font-[400] text-[15px]">0$</p>
                 </div>
-
-                <p class="text-[16px] mt-[14px] text-gray-400">Total</p>
-                <p class="text-[16px] mt-[14px] font-[500] text-right">$4000</p>
-                <!-- <p class="text-[14px] mt-2 text-gray-400">Payment Methods</p>
-                <div class="w-full flex flex-wrap mt-[14px]">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/paypal.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/visa.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/master.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/maestro.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/american.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/discover.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/jcb.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/union.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mx-2" src="@/assets/icons/diner.png" alt="">
-                </div> -->
-                <button class="text-center w-full text-white bg-black px-4 py-2 my-4 text-[14px]">Go To Checkout</button>
-                <p class="text-[14px] mt-2 text-gray-400">Payment Methods</p>
-                <div class="w-full flex flex-wrap mt-[14px]">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/paypal.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/visa.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/master.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/maestro.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/american.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/discover.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/jcb.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mb-2 mx-2" src="@/assets/icons/union.png" alt="">
-                    <img class="w-[50px] h-[30px] object-contain mx-2" src="@/assets/icons/diner.png" alt="">
+                <div class="w-full bg-[#e7e7e7] h-[1px] mt-6"></div>
+                <div class="w-full flex justify-between mt-8">
+                    <p class="text-[#bfbfbf] font-poppins font-[300] text-[13px]">Total Price</p>
+                    <p class="text-[black] font-poppins font-[400] text-[15px]">323$</p>
                 </div>
+                <button class="mt-6 outline-none w-full px-4 py-2 bg-black text-[12px] text-white font-poppins font-[300]">Proceed To Checkout</button>
             </div>
         </div>        
     </div>
@@ -235,8 +216,12 @@ export default {
 </script>
 
 <style scoped>
+    th{
+        @apply pb-6;
+    }
 
-tbody td:not(.th){
-    @apply py-8;
-}
+    td{
+        @apply pb-2 text-left;
+    }
 </style>
+
