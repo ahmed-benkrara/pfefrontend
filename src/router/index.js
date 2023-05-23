@@ -10,6 +10,7 @@ import PacksView from '../views/PacksView.vue'
 import AboutView from '../views/AboutView.vue'
 import ModuleDetailsView from '../views/ModuleDetailsView.vue'
 import PackDetailsView from '../views/PackDetailsView.vue'
+import CartView from '../views/CartView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
@@ -75,6 +76,10 @@ const routes = [
       {
         path : '/package/:id',
         component : PackDetailsView
+      },
+      {
+        path : '/cart',
+        component : CartView
       },
     ]
   },
