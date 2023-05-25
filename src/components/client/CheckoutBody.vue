@@ -5,12 +5,14 @@
             <div class="py-[50px] sm:pr-2 sm:pl-2 md:pl-20 md:pr-20 lg:pl-8 lg:pr-20 sm:order-last lg:order-first ">
                 <h1 class="text-[18px] text-[#4b5563] font-[500] mb-[26px] ">Contact Informations</h1>
                 <div class="w-full h-fit">
-                    <label for="email" class="text-[14px] font-poppins font-[500] block mb-2">Email address</label>
-                    <input class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="email" type="text">
+                  <label for="email" class="text-[14px] font-poppins font-[500] block mb-2">Email address</label>
+                  <!-- <input class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="email" type="text"> -->
+                  <input type="text" placeholder="Email" class="bg-[#fafafa] text-[15px] outline-none px-4 py-[10px] border w-full block mb-4">
                 </div>
                 <div class="w-full h-fit mt-4">
-                    <label for="email" class="text-[14px] font-poppins font-[500] block mb-2">Phone</label>
-                    <input class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="email" type="text">
+                  <label for="email" class="text-[14px] font-poppins font-[500] block mb-2">Phone</label>
+                  <!-- <input class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="email" type="text"> -->
+                  <input type="text" placeholder="Phone" class="bg-[#fafafa] text-[15px] outline-none px-4 py-[10px] border w-full block mb-4">
                 </div>
                 <h1 class="text-[18px] text-[#4b5563] font-[500] my-[26px] ">Payment Methods</h1>
                 <div ref="paypal"></div>

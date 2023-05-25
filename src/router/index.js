@@ -12,6 +12,10 @@ import ModuleDetailsView from '../views/ModuleDetailsView.vue'
 import PackDetailsView from '../views/PackDetailsView.vue'
 import CartView from '../views/CartView.vue'
 import CheckoutView from '../views/CheckoutView.vue'
+import AccountView from '../views/AccountView.vue'
+import AccountDetailsView from '../views/AccountDetailsView.vue'
+import PasswordView from '../views/PasswordView.vue'
+import FavoriteView from '../views/FavoriteView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
@@ -36,6 +40,10 @@ const routes = [
     redirect : '/home'
   },
   {
+    path : '/account',
+    redirect : '/account/profile'
+  },
+  {
     path: '/',
     name: 'main',
     component: MainClientView,
@@ -45,47 +53,65 @@ const routes = [
         component : HomeView
       },
       {
-        path : '/login',
+        path : 'login',
         component : LoginView,
         beforeEnter : guest
       },
       {
-        path : '/register',
+        path : 'register',
         component : RegisterView,
         beforeEnter : guest
       },
       {
-        path : '/contact',
+        path : 'contact',
         component : ContactView
       },
       {
-        path : '/modules',
+        path : 'modules',
         component : ModuleView
       },
       {
-        path : '/packages',
+        path : 'packages',
         component : PacksView
       },
       {
-        path : '/about',
+        path : 'about',
         component : AboutView
       },
       {
-        path : '/module/:id',
+        path : 'module/:id',
         component : ModuleDetailsView
       },
       {
-        path : '/package/:id',
+        path : 'package/:id',
         component : PackDetailsView
       },
       {
-        path : '/cart',
+        path : 'cart',
         component : CartView
       },
       {
-        path : '/checkout',
+        path : 'checkout',
         component : CheckoutView
       },
+      {
+        path : '/account',
+        component : AccountView,
+        children : [
+          {
+            path : 'profile',
+            component : AccountDetailsView
+          },
+          {
+            path : 'password',
+            component : PasswordView
+          },
+          {
+            path : 'favorite',
+            component : FavoriteView
+          }
+        ]
+      }
     ]
   },
   // {
