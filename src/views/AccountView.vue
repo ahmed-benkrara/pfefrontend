@@ -5,17 +5,17 @@
         <div class="w-full h-fit md:min-h-screen md:flex">
             <div class="sm:w-full md:w-[240px] px-4 sm:pb-8">
                 <ul class="mt-8 w-fit sm:hidden md:block">
-                    <li class="py-2 px-4 font-[500] text-[14px] text-[black] hover:text-black cursor-pointer rounded mb-2">
-                        <i class="fa-solid fa-user text-[18px] mr-2"></i> My Details
+                    <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
+                        <router-link to="/account/profile"><i class="fa-solid fa-user text-[18px] mr-2"></i> My Details</router-link>
                     </li>
                     <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
-                        <i class="fa-solid fa-gear text-[18px] mr-2"></i> Settings
+                        <router-link to="/account/password"><i class="fa-solid fa-gear text-[18px] mr-2"></i> Settings</router-link>
                     </li>
                     <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
                         <i class="fa-solid fa-bag-shopping text-[18px] mr-2"></i> My Orders
                     </li>
                     <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
-                        <i class="fa-solid fa-heart text-[18px] mr-2"></i> My Favorite
+                        <router-link to="/account/favorite"><i class="fa-solid fa-heart text-[18px] mr-2"></i> My Favorite</router-link>
                     </li>
                     
                 </ul>
@@ -47,15 +47,7 @@ export default  {
 </script>
 
 <style scoped>
-.listitem{
-    @apply py-2 px-4 rounded-[5px] bg-[#828bb815] text-[14px] text-[#828bb8] font-inter font-[500] cursor-pointer mt-2;
-}
-
-.listitem:hover{
-    @apply text-[black] bg-[#828bb815] transition-colors duration-500 ;
-}
-
-.listicon{
-    @apply w-[20px] mr-2;
-}
+    li .router-link-exact-active{
+        @apply text-black;
+    }
 </style>

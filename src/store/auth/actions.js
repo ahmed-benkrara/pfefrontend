@@ -1,5 +1,4 @@
 import axios from 'axios'
-//process.env.VUE_APP_BASE_URL
 
 const authActions = {
     async login({commit}, payload){
