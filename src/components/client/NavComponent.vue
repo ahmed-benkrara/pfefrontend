@@ -17,7 +17,7 @@
             <li class="mx-2 cursor-pointer" ><router-link to="/contact">Contact</router-link></li>
         </ul>
         <div class="flex text-[20px]">
-            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer cart" test="0" src="@/assets/icons/cart.svg" alt="">
+            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer cart" @click="showcart()" src="@/assets/icons/cart.svg" alt="">
             <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" src="@/assets/icons/heart.svg" alt="">
             <div class="mx-2 relative">
                 <i class="cursor-pointer fa-regular fa-user" @click="toggle($event)"></i>
@@ -49,10 +49,12 @@
             <li class="mx-2 my-4 cursor-pointer" >Contact</li>
         </ul>
     </div>
-    
+    <CartMenu />
 </template>
 
 <script>
+import CartMenu from './CartMenu.vue'
+
 export default {
     name : 'NavComponent',
     data(){
@@ -61,6 +63,11 @@ export default {
         }
     },
     methods: {
+        showcart(){
+            let cart = document.getElementById('cart')
+            cart.classList.remove('cartclose')
+            cart.classList.add('cartopen')
+        },
         showmenu(){
             let nav = document.getElementById('smnav')
             nav.classList.remove('navclose')
@@ -102,14 +109,16 @@ export default {
     },
     mounted(){
         this.title = process.env.VUE_APP_TITLE
+    },
+    components: {
+        CartMenu
     }
 }
 </script>
 
 <style scoped>
-
-@media only screen and (max-width: 320px){
-    /* hide the page here with a message your device isn't supported */
+.cartopen{
+    animation: navopen 1s ease-in-out forwards;
 }
 
 .navopen{

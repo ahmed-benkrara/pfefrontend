@@ -349,7 +349,10 @@ module.exports = {
       inter : ['Inter', 'sans-serif'],
       varela : ['Varela Round', 'sans-serif'],
       dm : ['DM Sans', 'sans-serif'],
-      rubik : ['Rubik', 'sans-serif']
+      rubik : ['Rubik', 'sans-serif'],
+      reemkufi : ['Reem Kufi', 'sans-serif'],
+      ibm : ['IBM Plex Sans', 'sans-serif'],
+      karla : ['Karla', 'sans-serif']
     },
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
