@@ -31,22 +31,22 @@
     <div id="smnav" class="sm:text-[14px] md:text-[16px] py-[20px] px-[10px] lg:hidden sm:w-[250px] md:w-[400px] right-[-100%] top-0 h-full z-[10] fixed bg-white shadow-md">
         <img @click="closemenu()" class="block close ml-auto mx-2 sm:w-[28px]  md:w-[30px] cursor-pointer" src="@/assets/icons/close.svg" alt="">
         <ul class="font-poppins font-[300] tracking-[2px] mt-6">
-            <li class="mx-2 my-4 cursor-pointer">Home</li>
-            <li class="mx-2 my-4 cursor-pointer">Packages</li>
-            <li class="mx-2 my-4 cursor-pointer">Modules</li>
-            <li class="mx-2 my-4 cursor-pointer">Services</li>
-            <li class="mx-2 my-4" >
+            <li class="mx-2 my-4 cursor-pointer"><router-link to="/">Home</router-link></li>
+            <li class="mx-2 my-4 cursor-pointer"><router-link to="/packages">Packages</router-link></li>
+            <li class="mx-2 my-4 cursor-pointer"><router-link to="/modules">Modules</router-link></li>
+            <li class="mx-2 my-4 cursor-pointer"><router-link to="/home#services">Services</router-link></li>
+            <!-- <li class="mx-2 my-4" >
                 <div class="flex justify-between">
                     <p>Features</p>
-                    <i class="text-[#656565] fa-solid fa-plus block" @click="toggleitem($event)"></i><!--minus-->
+                    <i class="text-[#656565] fa-solid fa-plus block" @click="toggleitem($event)"></i>
                 </div>
                 <ul class="pl-[16px] h-0 overflow-hidden">
                     <li class="my-4 cursor-pointer">FAQs</li>
                     <li class="mt-4 cursor-pointer">Privacy Policy</li>
                 </ul>
-            </li>
-            <li class="mx-2 my-4 cursor-pointer" >About Us</li>
-            <li class="mx-2 my-4 cursor-pointer" >Contact</li>
+            </li> -->
+            <li class="mx-2 my-4 cursor-pointer" ><router-link to="/about">About Us</router-link></li>
+            <li class="mx-2 my-4 cursor-pointer" ><router-link to="/contact">Contact</router-link></li>
         </ul>
     </div>
     <CartMenu />

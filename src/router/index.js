@@ -79,11 +79,11 @@ const routes = [
         component : AboutView
       },
       {
-        path : 'module/:id',
+        path : 'module/:id/:slug',
         component : ModuleDetailsView
       },
       {
-        path : 'package/:id',
+        path : 'package/:id/:slug',
         component : PackDetailsView
       },
       {

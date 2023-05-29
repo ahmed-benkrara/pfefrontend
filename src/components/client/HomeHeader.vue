@@ -7,7 +7,7 @@
             <div class="absolute sm:w-full sm:px-2 md:px-0 md:w-fit h-fit sm:left-0 top-0 bottom-0 md:left-[110px] sm:text-center md:text-left m-auto text-white font-poppins font-[300]">
                 <h6 data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="sm:text-[16px] md:text-[18px] mb-[8px] test">Uncover our wide array of packages!</h6>
                 <p data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="md:max-w-[400px] sm:text-[23px] md:text-[25px] font-semibold test">Optimize efficiency effortlessly with our tailored ERP module packages.</p>
-                <router-link data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" to="/">View More <i class="fa-solid fa-arrow-right-long ml-[4px]"></i></router-link>
+                <router-link data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" to="/packages">View More <i class="fa-solid fa-arrow-right-long ml-[4px]"></i></router-link>
             </div>
         </div>
         <div class="carousel-item relative">
@@ -15,7 +15,7 @@
             <div class="absolute sm:w-full sm:px-2 md:px-0 md:w-fit h-fit sm:left-0 top-0 bottom-0 md:left-[110px] sm:text-center md:text-left m-auto text-white font-poppins font-[300]">
                 <h6 data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine"  class="sm:text-[16px] md:text-[18px] mb-[8px] test">Custom ERP Modules: Boost Your Business!</h6>
                 <p data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine"  class="md:max-w-[400px] sm:text-[23px] md:text-[25px] font-semibold test">Enhance Your Business with Customizable ERP Modules. Discover Our Products!</p>
-                <router-link data-aos="zoom-in" data-aos-duration="800"  data-aos-easing="ease-in-sine" to="/">View More <i class="fa-solid fa-arrow-right-long ml-[4px]"></i></router-link>
+                <router-link data-aos="zoom-in" data-aos-duration="800"  data-aos-easing="ease-in-sine" to="/modules">View More <i class="fa-solid fa-arrow-right-long ml-[4px]"></i></router-link>
             </div>
         </div>
         <div class="carousel-item relative">
@@ -23,17 +23,17 @@
             <div class="absolute sm:w-full sm:px-2 md:px-0 md:w-fit h-fit sm:left-0 top-0 bottom-0 md:left-[110px] sm:text-center md:text-left m-auto text-white font-poppins font-[300]">
                 <h6 data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="sm:text-[16px] md:text-[18px] mb-[8px] test">Your Success is Our Priority!</h6>
                 <p data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="md:max-w-[400px] sm:text-[23px] md:text-[25px] font-semibold test">Unleash Business Excellence with Our Expert Services. Take the First Step Now!</p>
-                <router-link data-aos="zoom-in" data-aos-duration="800"  data-aos-easing="ease-in-sine" to="/">View More <i class="fa-solid fa-arrow-right-long ml-[4px]"></i></router-link>
+                <router-link data-aos="zoom-in" data-aos-duration="800"  data-aos-easing="ease-in-sine" to="/contact">View More <i class="fa-solid fa-arrow-right-long ml-[4px]"></i></router-link>
             </div>
         </div>
-        <div class="carousel-item relative">
+        <!-- <div class="carousel-item relative">
             <img class="filt w-full h-[600px] object-cover lg:object-top" src="https://images.pexels.com/photos/1036622/pexels-photo-1036622.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Image 2">
             <div class="absolute sm:w-full sm:px-2 md:px-0 md:w-fit h-fit sm:left-0 top-0 bottom-0 md:left-[110px] sm:text-center md:text-left m-auto text-white font-poppins font-[300]">
                 <h6 data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="sm:text-[16px] md:text-[18px] mb-[8px] test">Connect for Effective Communication!</h6>
                 <p data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" class="md:max-w-[400px] sm:text-[23px] md:text-[25px] font-semibold test">Unlock Business Excellence with Our Expert Services. Take the First Step Now!</p>
                 <router-link data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine" to="/">View More <i class="fa-solid fa-arrow-right-long ml-[4px]"></i></router-link>
             </div>
-        </div>
+        </div> -->
       </div>
       <div class="carousel-controls">
         <button class="bg-white text-black font-bold py-2 px-4 rounded-l" @click="prevSlide"><i class="fa-solid fa-chevron-left"></i></button>
@@ -52,7 +52,7 @@ export default {
     data() {
         return {
         currentIndex: 0,
-        numItems: 4,
+        numItems: 3,
         };
     },
     methods: {

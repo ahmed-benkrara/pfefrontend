@@ -114,121 +114,74 @@
                         </div>
                     </div>
                 </div>
-                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-x-2 lg:grid-cols-5">
-                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
+                <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-x-2 lg:grid-cols-5" v-if="ready">
+
+                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card" v-for="item in displayedItems" :key="item">
+                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden" :title="item.name">
+                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" :src="item.relationships.images[0].url" alt="">
                             <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
                         </div>
                         <div class="flex justify-between sm:w-[160px] md:w-[200px]">
                             <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-4 overflow-hidden block md:mx-0 cursor-pointer card">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[140px] md:w-[220px] sm:h-[200px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
+                                <router-link :to="`/module/${item.id}/${slug(item.name)}`">
+                                    <p class="sm:text-[12px] md:text-[16px] font-poppins font-[400]">
+                                        {{ item.name.length <= 14 ? item.name : item.name.slice(0,11).concat("...") }}
+                                    </p>
+                                    <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">${{ item.price }}</p>
+                                </router-link>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                
+                <button @click="loadMore()" v-if="!allItemsDisplayed">load more ...</button>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
+import slugify from 'slugify'
 
 export default {
     name : 'ModuleCards',
     data(){
         return{
-            isDropdownOpen: false
+            isDropdownOpen: false,
+            data : [],
+            displayedItems : [],
+            ready : false,
+            pageSize : 20,
+            currentPage : 1
+        }
+    },
+    computed: {
+        ...mapGetters('moduleModule', ['getData', 'getLoading', 'getError', 'getSuccess']),
+        allItemsDisplayed() {
+            return this.displayedItems.length === this.data.length
+        }
+    },
+    watch: {
+        getSuccess(newValue){
+            if(newValue){
+                this.data = [...this.getData]
+                this.ready = true
+                console.log(this.data)
+                this.loadMore()
+
+            }else{
+                console.log('error')
+            }
         }
     },
     methods: {
+        ...mapActions('moduleModule', ['getModules']),
+        slug(name){
+            return slugify(name, {lower : true, replacement: '-'})
+        },
         toggleDropdown() {
             this.isDropdownOpen = !this.isDropdownOpen
         },
@@ -258,6 +211,16 @@ export default {
                 })
             }
 
+        },
+        loadMore() {
+            const startIndex = (this.currentPage - 1) * this.pageSize
+            const endIndex = startIndex + this.pageSize
+
+            this.displayedItems = this.displayedItems.concat(
+                this.data.slice(startIndex, endIndex)
+            );
+
+            this.currentPage++
         }
     },
     mounted(){
@@ -267,6 +230,15 @@ export default {
         window.addEventListener("resize", () => {
             this.card()
         })
+
+        
+        if(this.getData != null){
+            this.data = [...this.getData]
+            this.loadMore()
+            this.ready = true
+        }else{
+            this.getModules()
+        }
     }
 }
 </script>
