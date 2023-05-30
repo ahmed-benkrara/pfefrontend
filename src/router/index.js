@@ -16,6 +16,7 @@ import AccountView from '../views/AccountView.vue'
 import AccountDetailsView from '../views/AccountDetailsView.vue'
 import PasswordView from '../views/PasswordView.vue'
 import FavoriteView from '../views/FavoriteView.vue'
+import TestView from '../views/TestView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
@@ -89,6 +90,10 @@ const routes = [
       {
         path : 'cart',
         component : CartView
+      },
+      {
+        path : 'test',
+        component : TestView
       },
       {
         path : 'checkout',

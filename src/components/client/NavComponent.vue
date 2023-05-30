@@ -35,7 +35,7 @@
             <li class="mx-2 my-4 cursor-pointer"><router-link to="/packages">Packages</router-link></li>
             <li class="mx-2 my-4 cursor-pointer"><router-link to="/modules">Modules</router-link></li>
             <li class="mx-2 my-4 cursor-pointer"><router-link to="/home#services">Services</router-link></li>
-            <!-- <li class="mx-2 my-4" >
+            <li class="mx-2 my-4" >
                 <div class="flex justify-between">
                     <p>Features</p>
                     <i class="text-[#656565] fa-solid fa-plus block" @click="toggleitem($event)"></i>
@@ -44,7 +44,7 @@
                     <li class="my-4 cursor-pointer">FAQs</li>
                     <li class="mt-4 cursor-pointer">Privacy Policy</li>
                 </ul>
-            </li> -->
+            </li>
             <li class="mx-2 my-4 cursor-pointer" ><router-link to="/about">About Us</router-link></li>
             <li class="mx-2 my-4 cursor-pointer" ><router-link to="/contact">Contact</router-link></li>
         </ul>
