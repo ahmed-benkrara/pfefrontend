@@ -46,10 +46,11 @@
                                 <i class="fa-solid fa-plus text-[11px]"></i>
                             </div>
                             <ul class="h-0 overflow-hidden">
-                                <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$0 - $100</li>
-                                <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$100 - $200</li>
-                                <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$200 - $200</li>
-                                <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$300+</li>
+                                <li @click="setPrice(-1)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">clear</li>
+                                    <li @click="setPrice(0)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$0 - $100</li>
+                                    <li @click="setPrice(100)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$100 - $200</li>
+                                    <li @click="setPrice(200)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$200 - $300</li>
+                                    <li @click="setPrice(300)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$300+</li>
                             </ul>
                         </div>
                         <div class="my-[14px]">
@@ -58,11 +59,12 @@
                                 <i class="fa-solid fa-plus text-[11px]"></i>
                             </div>
                             <ul class="h-0 overflow-hidden">
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">1 star and higher</li>
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">2 stars and higher</li>
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">3 stars and higher</li>
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">4 stars and higher</li>
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">5 stars and higher</li>
+                                <li @click="setRate(-1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">clear</li>
+                                    <li @click="setRate(5)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">5 stars</li>
+                                    <li @click="setRate(4)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">4 stars and higher</li>
+                                    <li @click="setRate(3)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">3 stars and higher</li>
+                                    <li @click="setRate(2)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">2 stars and higher</li>
+                                    <li @click="setRate(1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">1 star and higher </li>
                             </ul>
                         </div>
                         <div class="my-[14px]">
@@ -71,52 +73,15 @@
                                 <i class="fa-solid fa-plus text-[11px]"></i>
                             </div>
                             <ul class="h-0 overflow-hidden">
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Title</li>
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Latest</li>
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price low to high</li>
-                                <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price high to low</li>
+                                <li @click="setSort(-1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">clear</li>
+                                <li @click="setSort(0)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Title</li>
+                                <li @click="setSort(1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Latest</li>
+                                <li @click="setSort(2)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price low to high</li>
+                                <li @click="setSort(3)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price high to low</li>
                             </ul>
                         </div>
                     </ul>
                 </div>
-                <!-- <div class="w-[160px] mx-auto">
-                    <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px] mt-[30px] mb-[14px]">FILTERS</h2>
-                    <div class="my-[14px]">
-                        <div class="flex items-center justify-between max-w-[160px] cursor-pointer" @click="toggleitem($event)">
-                            <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px]">TITLE</h2>
-                            <i class="fa-solid fa-plus text-[11px]"></i>
-                        </div>
-                        <ul class="h-0 overflow-hidden">
-                            <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px]">
-                                <input type="text" placeholder="search ..." class="outline-none px-[4px] py-[2px]">
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="my-[14px]">
-                        <div class="flex items-center justify-between max-w-[160px] cursor-pointer" @click="toggleitem($event)">
-                            <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px]">PRICE</h2>
-                            <i class="fa-solid fa-plus text-[11px]"></i>
-                        </div>
-                        <ul class="h-0 overflow-hidden">
-                            <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$0 - $100</li>
-                            <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$100 - $200</li>
-                            <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$200 - $200</li>
-                            <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$300+</li>
-                        </ul>
-                    </div>
-                    <div class="my-[14px]">
-                        <div class="flex items-center justify-between max-w-[160px] cursor-pointer" @click="toggleitem($event)">
-                            <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px]">SORT BY</h2>
-                            <i class="fa-solid fa-plus text-[11px]"></i>
-                        </div>
-                        <ul class="h-0 overflow-hidden">
-                            <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Title</li>
-                            <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Latest</li>
-                            <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price low to high</li>
-                            <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price high to low</li>
-                        </ul>
-                    </div>
-                </div> -->
             </div>
             <div :class="getContainerClasses" id="container">
                 <div :class="getLeftClasses">
@@ -124,6 +89,7 @@
                         <p class="font-ibm text-[13px] text-[#434343] mt-4 tracking-[0.25px]">Home / &nbsp;Modules</p>
                         <div class="sticky top-0 left-0 w-full h-fit">
                             <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px] mt-[30px] mb-[14px]">FILTERS</h2>
+                            <h2 @click="clear()" class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px] cursor-pointer">CLEAR</h2>
                             <div class="my-[14px]">
                                 <div class="flex items-center justify-between max-w-[160px] cursor-pointer" @click="toggleitem($event)">
                                     <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px]">TITLE</h2>
@@ -131,7 +97,7 @@
                                 </div>
                                 <ul class="h-0 overflow-hidden">
                                     <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px]">
-                                        <input type="text" placeholder="search ..." class="outline-none px-[4px] py-[2px]">
+                                        <input type="text" v-model="title" placeholder="search ..." class="outline-none px-[4px] py-[2px]">
                                     </li>
                                 </ul>
                             </div>
@@ -141,10 +107,11 @@
                                     <i class="fa-solid fa-plus text-[11px]"></i>
                                 </div>
                                 <ul class="h-0 overflow-hidden">
-                                    <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$0 - $100</li>
-                                    <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$100 - $200</li>
-                                    <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$200 - $200</li>
-                                    <li class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$300+</li>
+                                    <li @click="setPrice(-1)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">clear</li>
+                                    <li @click="setPrice(0)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$0 - $100</li>
+                                    <li @click="setPrice(100)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$100 - $200</li>
+                                    <li @click="setPrice(200)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$200 - $300</li>
+                                    <li @click="setPrice(300)" class="font-ibm cursor-pointer text-[13px] text-[#434343] font-[300] py-[4px]">$300+</li>
                                 </ul>
                             </div>
                             <div class="my-[14px]">
@@ -153,11 +120,12 @@
                                     <i class="fa-solid fa-plus text-[11px]"></i>
                                 </div>
                                 <ul class="h-0 overflow-hidden">
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">1 star and higher </li>
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">2 stars and higher</li>
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">3 stars and higher</li>
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">4 stars and higher</li>
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">5 stars and higher</li>
+                                    <li @click="setRate(-1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">clear</li>
+                                    <li @click="setRate(5)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">5 stars</li>
+                                    <li @click="setRate(4)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">4 stars and higher</li>
+                                    <li @click="setRate(3)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">3 stars and higher</li>
+                                    <li @click="setRate(2)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">2 stars and higher</li>
+                                    <li @click="setRate(1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">1 star and higher </li>
                                 </ul>
                             </div>
                             <div class="my-[14px]">
@@ -166,10 +134,11 @@
                                     <i class="fa-solid fa-plus text-[11px]"></i>
                                 </div>
                                 <ul class="h-0 overflow-hidden">
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Title</li>
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Latest</li>
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price low to high</li>
-                                    <li class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price high to low</li>
+                                    <li @click="setSort(-1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">clear</li>
+                                    <li @click="setSort(0)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Title</li>
+                                    <li @click="setSort(1)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Latest</li>
+                                    <li @click="setSort(2)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price low to high</li>
+                                    <li @click="setSort(3)" class="font-ibm text-[13px] text-[#444] font-[300] py-[4px] cursor-pointer">Price high to low</li>
                                 </ul>
                             </div>
                         </div>
@@ -195,8 +164,9 @@
                     
                         <div class="w-full h-fit" :class="{padding : true}" v-for="item in displayedItems" :key="item">
                             <div class="relative" >
-                                <img  :class="getImageClasses" :src="item.relationships.images[0].url" alt="">
-                                <!-- <button @click="addToCart(item.id)" class="w-fit uppercase outline-none text-white bg-[#333f48] hover:bg-black sm:px-[10px] md:px-[40px] py-[14px] text-[12px] tracking-[2px] font-karla font-bold hidden absolute inset-0 m-auto h-fit">add to cart</button> -->
+                                <router-link :to="`/module/${item.id}/${slug(item.name)}`">
+                                    <img :class="getImageClasses" :src="item.relationships.images[0].url" alt="">
+                                </router-link>
                             </div>
                             <div class="mt-[10px]">
                                 <router-link :to="`/module/${item.id}/${slug(item.name)}`">
@@ -207,9 +177,11 @@
                                 <p class="text-[12px] font-ibm text-[#434343] text-center font-[300]" v-if="item.relationships.reviews.length > 1">{{ item.relationships.reviews.length }} reviews</p>
                             </div>
                         </div>
-    
                     </div>
-                    <button @click="loadMore()" v-if="!allItemsDisplayed" class="w-fit mt-[80px] mx-auto uppercase outline-none text-white bg-[#333f48] hover:bg-black px-[40px] py-[14px] text-[12px] tracking-[2px] font-karla font-bold block">load more</button>
+                    <div class="w-fit mx-auto text-[20px] font-ibm pt-[100px] text-center" v-if="ready && displayedItems.length == 0">
+                        THERE ARE NO RESULTS FOUND
+                    </div>
+                    <button @click="loadMore()" v-if="!allItemsDisplayed && displayedItems.length > 0" class="w-fit mt-[80px] mx-auto uppercase outline-none text-white bg-[#333f48] hover:bg-black px-[40px] py-[14px] text-[12px] tracking-[2px] font-karla font-bold block">load more</button>
     
                 </div>
             </div>
@@ -236,7 +208,12 @@ export default {
             displayedItems : [],
             ready : false,
             pageSize : 21,
-            currentPage : 1
+            currentPage : 1,
+            title : '',
+            price : -1,
+            rate : -1,
+            sortby : -1,
+            default : []
         }
     },
     computed : {
@@ -262,12 +239,24 @@ export default {
             if(newValue){
                 this.data = [...this.getData]
                 this.ready = true
-                console.log(this.data)
+                this.calculateRate()
                 this.loadMore()
 
             }else{
                 console.log('error')
             }
+        },
+        title(){
+            this.search()
+        },
+        price(){
+            this.search()
+        },
+        rate(){
+            this.search()
+        },
+        sortby(){
+            this.sort()
         }
     },
     methods : {
@@ -444,13 +433,18 @@ export default {
                 this.mobileFilters = true
             }
         },loadMore() {
+            // const startIndex = (this.currentPage - 1) * this.pageSize
+            // const endIndex = startIndex + this.pageSize
+
+            // this.displayedItems = this.displayedItems.concat(
+            //     this.data.slice(startIndex, endIndex)
+            // );
+
+            // this.currentPage++
             const startIndex = (this.currentPage - 1) * this.pageSize
-            const endIndex = startIndex + this.pageSize
-
-            this.displayedItems = this.displayedItems.concat(
-                this.data.slice(startIndex, endIndex)
-            );
-
+            let endIndex = startIndex + this.pageSize
+            const filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title))
+            this.displayedItems = this.displayedItems.concat(filteredData.slice(startIndex, endIndex))
             this.currentPage++
         },
         showCart(e){
@@ -465,6 +459,84 @@ export default {
         },
         addToCart(id){
             alert(id)
+        },
+        search(){
+            this.currentPage = 1
+            let filteredData = []
+            if(this.price < 300 && this.price >= 0){
+                filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title) && item.price >= this.price && item.price <= (this.price + 1))
+            }else{
+                filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title) && item.price >= this.price)
+            }
+
+            if(this.rate > 0){
+                filteredData = filteredData.filter(item => item.rate >= this.rate)
+            }
+
+            this.displayedItems = filteredData.slice(0, this.pageSize)
+        },
+        setPrice(price){
+            this.price = price
+        },
+        setRate(rate){
+            this.rate = rate
+        },
+        clear(){
+            this.title = '',
+            this.price = -1
+            this.rate = -1
+            this.sortby = -1
+        },
+        calculateRate(){
+            this.data.forEach(item => {
+                let rate = 0
+                if(item.relationships.reviews.length > 0){
+                    item.relationships.reviews.forEach(x => {
+                        rate += x.rate
+                    })
+                    rate = rate / item.relationships.reviews.length
+                }
+                item.rate = rate
+            })
+        },
+        setSort(sort){
+            this.sortby = sort
+        },
+        sort(){
+            this.currentPage = 1
+            this.data = [...this.getData]
+            if(this.sortby == 0){
+                //title
+                this.data.sort((a,b) => {
+                    return ('' + b.name).localeCompare(a.name)
+                })
+                this.displayedItems = []
+                this.loadMore()
+            }else if(this.sortby == 1){
+                //latest
+                this.data.sort((a,b) => {
+                    return new Date(b.created_at) - new Date(a.created_at)
+                })
+                this.displayedItems = []
+                this.loadMore()
+            }else if(this.sortby == 2){
+                //price asc
+                this.data.sort((a,b) => {
+                    return a.price - b.price
+                })
+                this.displayedItems = []
+                this.loadMore()
+            }else if(this.sortby == 3){
+                //price desc
+                this.data.sort((a,b) => {
+                    return b.price - a.price
+                })
+                this.displayedItems = []
+                this.loadMore()
+            }else{
+                this.displayedItems = []
+                this.loadMore()
+            }
         }
     },
     mounted() {
@@ -473,6 +545,7 @@ export default {
 
         if(this.getData != null){
             this.data = [...this.getData]
+            this.calculateRate()
             this.loadMore()
             this.ready = true
         }else{
