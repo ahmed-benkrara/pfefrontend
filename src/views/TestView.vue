@@ -1,9 +1,9 @@
 <template>
     <div>
-        <ModuleHeader/>
+        <PackHeader/>
         <div class="pt-[50px] pb-[100px]">
             <div class="w-full" v-if="mobileFilters">
-                <p class="font-ibm text-[13px] text-[#434343] mt-4 tracking-[0.25px] text-center">Home / &nbsp;Modules</p>
+                <p class="font-ibm text-[13px] text-[#434343] mt-4 tracking-[0.25px] text-center">Home / &nbsp;Packages</p>
                 <i @click="showmenu()" class="block mx-auto w-fit mt-4 cursor-pointer">
                     <svg width="23px" height="18px" viewBox="0 0 23 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -86,7 +86,7 @@
             <div :class="getContainerClasses" id="container">
                 <div :class="getLeftClasses">
                     <div class="pr-4 w-full max-h-[600px] overflow-y-scroll hidescroll">
-                        <p class="font-ibm text-[13px] text-[#434343] mt-4 tracking-[0.25px]">Home / &nbsp;Modules</p>
+                        <p class="font-ibm text-[13px] text-[#434343] mt-4 tracking-[0.25px]">Home / &nbsp;Packages</p>
                         <div class="sticky top-0 left-0 w-full h-fit">
                             <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px] mt-[30px] mb-[14px]">FILTERS</h2>
                             <h2 @click="clear()" class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px] cursor-pointer">CLEAR</h2>
@@ -146,7 +146,7 @@
                 </div>
                 <div :class="getRightClasses">
                     <div class="flex justify-between items-center w-full pr-4">
-                        <p class="sm:text-[20px] md:text-[22px] lg:text-[27px] font-reemkufi font-[400] text-[#434343]">all modules</p>
+                        <p class="sm:text-[20px] md:text-[22px] lg:text-[27px] font-reemkufi font-[400] text-[#434343]">all packages</p>
                         <!-- <div class="flex items-center">
                             <p class="font-ibm font-[700] sm:text-[12px] md:text-[14px] text-[#434343] tracking-[1px] mr-[10px]">sort by</p>
                             <div>
@@ -165,12 +165,12 @@
                         <div class="w-full h-fit" :class="{padding : true}" v-for="item in displayedItems" :key="item">
                             <div class="relative" >
                                 <router-link :to="`/module/${item.id}/${slug(item.name)}`">
-                                    <img :class="getImageClasses" :src="item.relationships.images[0].url" alt="">
+                                    <img :class="getImageClasses" :src="item.relationships.modules[0].images[0].url" alt="">
                                 </router-link>
                             </div>
                             <div class="mt-[10px]">
                                 <router-link :to="`/module/${item.id}/${slug(item.name)}`">
-                                    <h3 class="text-[12px] leading-[19px] tracking-[0.21px] font-ibm text-[#434343] text-center font-[300]">{{ item.name.length <= 30 ? item.name : item.name.slice(0,30).concat("...") }}</h3>
+                                    <h3 class="text-[12px] leading-[19px] tracking-[0.21px] font-ibm text-[#434343] text-center font-[300]">{{ item.name.length <= 20 ? item.name : item.name.slice(0,20).concat("...") }}</h3>
                                 </router-link>
                                 <p class="text-[12.8px] font-ibm text-[#fa363a] text-center font-[700]">${{ item.price }}</p>
                                 <p class="text-[12px] font-ibm text-[#434343] text-center font-[300]" v-if="item.relationships.reviews.length == 1">{{ item.relationships.reviews.length }} review</p>
@@ -192,7 +192,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import slugify from 'slugify'
-import ModuleHeader from '@/components/client/ModuleHeader.vue'
+import PackHeader from '@/components/client/PackHeader.vue'
 
 export default {
     name : 'TestView',
@@ -229,7 +229,7 @@ export default {
         getContainerClasses(){
             return 'w-full py-4 mx-auto max-w-[1200px] flex '+ this.containerClasses
         },        
-        ...mapGetters('moduleModule', ['getData', 'getLoading', 'getError', 'getSuccess']),
+        ...mapGetters('packageModule', ['getData', 'getLoading', 'getError', 'getSuccess']),
         allItemsDisplayed() {
             return this.displayedItems.length === this.data.length
         }
@@ -260,7 +260,7 @@ export default {
         }
     },
     methods : {
-        ...mapActions('moduleModule', ['getModules']),
+        ...mapActions('packageModule', ['getPackages']),
         slug(name){
             return slugify(name, {lower : true, replacement: '-'})
         },
@@ -433,18 +433,24 @@ export default {
                 this.mobileFilters = true
             }
         },loadMore() {
-            // const startIndex = (this.currentPage - 1) * this.pageSize
-            // const endIndex = startIndex + this.pageSize
-
-            // this.displayedItems = this.displayedItems.concat(
-            //     this.data.slice(startIndex, endIndex)
-            // );
-
-            // this.currentPage++
             const startIndex = (this.currentPage - 1) * this.pageSize
             let endIndex = startIndex + this.pageSize
-            const filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title))
-            this.displayedItems = this.displayedItems.concat(filteredData.slice(startIndex, endIndex))
+            let filteredData = []
+            if(this.price < 300 && this.price >= 0){
+                filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title) && item.price >= this.price && item.price <= (this.price + 1))
+            }else{
+                filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title) && item.price >= this.price)
+            }
+
+            if(this.rate > 0){
+                filteredData = filteredData.filter(item => item.rate >= this.rate)
+            }
+            // const filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title))
+            if(this.currentPage == 1){
+                this.displayedItems = filteredData.slice(startIndex, endIndex)
+            }else{
+                this.displayedItems = this.displayedItems.concat(filteredData.slice(startIndex, endIndex))
+            }
             this.currentPage++
         },
         showCart(e){
@@ -549,14 +555,14 @@ export default {
             this.loadMore()
             this.ready = true
         }else{
-            this.getModules()
+            this.getPackages()
         }
     },
     beforeUnmount() {
         window.removeEventListener('resize', this.updateImageSizeClasses)
     },
     components : {
-        ModuleHeader
+        PackHeader
     }
 }
 </script>
