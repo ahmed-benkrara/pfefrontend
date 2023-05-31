@@ -85,7 +85,7 @@
             </div>
             <div :class="getContainerClasses" id="container">
                 <div :class="getLeftClasses">
-                    <div class="pr-4">
+                    <div class="pr-4 w-full max-h-[600px] overflow-y-scroll hidescroll">
                         <p class="font-ibm text-[13px] text-[#434343] mt-4 tracking-[0.25px]">Home / &nbsp;Modules</p>
                         <div class="sticky top-0 left-0 w-full h-fit">
                             <h2 class="font-karla font-[700] text-[12px] text-[#434343] tracking-[3px] leading-[25px] mt-[30px] mb-[14px]">FILTERS</h2>
@@ -612,5 +612,13 @@ export default {
     to{
         right: -100%;
     }
+}
+
+.hidescroll::-webkit-scrollbar{
+    width: 0;
+}
+
+.hidescroll{
+    scrollbar-width: none;
 }
 </style>
