@@ -444,8 +444,22 @@ export default {
             // this.currentPage++
             const startIndex = (this.currentPage - 1) * this.pageSize
             let endIndex = startIndex + this.pageSize
-            const filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title))
-            this.displayedItems = this.displayedItems.concat(filteredData.slice(startIndex, endIndex))
+            let filteredData = []
+            if(this.price < 300 && this.price >= 0){
+                filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title) && item.price >= this.price && item.price <= (this.price + 1))
+            }else{
+                filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title) && item.price >= this.price)
+            }
+
+            if(this.rate > 0){
+                filteredData = filteredData.filter(item => item.rate >= this.rate)
+            }
+            // const filteredData = this.data.filter(item => item.name.toLowerCase().includes(this.title))
+            if(this.currentPage == 1){
+                this.displayedItems = filteredData.slice(startIndex, endIndex)
+            }else{
+                this.displayedItems = this.displayedItems.concat(filteredData.slice(startIndex, endIndex))
+            }
             this.currentPage++
         },
         showCart(e){
@@ -550,7 +564,7 @@ export default {
                 },
             ],
         })
-        
+
         this.updateImageSizeClasses()
         window.addEventListener('resize', this.updateImageSizeClasses)
 
