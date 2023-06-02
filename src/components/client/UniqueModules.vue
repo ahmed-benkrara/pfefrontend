@@ -13,7 +13,7 @@
                     <div class="mt-4 overflow-hidden block" data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
                             <img class="filt cursor-pointer sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" :src="item.relationships.images[0].url" alt="">
-                            <div class="absolute cursor-pointer top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
+                            <div @click="addToCart(item.id)" class="absolute cursor-pointer top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
                         </div>
@@ -56,7 +56,8 @@
             }
         },
         computed: {
-            ...mapGetters('moduleModule', ['getData', 'getLoading', 'getError', 'getSuccess'])
+            ...mapGetters('moduleModule', ['getData', 'getLoading', 'getError', 'getSuccess']),
+            // ...mapGetters('cartModule', ['readLocal','addLocal'])
         },
         watch: {
             getSuccess(newValue){
@@ -70,6 +71,7 @@
         },
         methods: {
             ...mapActions('moduleModule', ['getModules']),
+            ...mapActions('cartModule', ['readLocal', 'addLocal', 'deleteLocal']),
             slug(name){
                 return slugify(name, {lower : true, replacement: '-'})
             },
@@ -117,6 +119,17 @@
                 else {
                     this.slidesPerView = 5;
                 }
+            },
+            addToCart(id){
+                let module = this.data.find(item => item.id == id)
+                let item = {
+                    id : module.id,
+                    type : 'module',
+                    image : module.relationships.images[0].url,
+                    price : module.price,
+                    name : module.name
+                }
+                this.addLocal(item)
             }
         },
         mounted() {

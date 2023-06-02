@@ -7,10 +7,30 @@ import { mapActions } from 'vuex'
 
 export default {
   methods: {
-    ...mapActions('authModule',['tokenFromLocalStorage'])
+    ...mapActions('authModule',['tokenFromLocalStorage']),
+    ...mapActions('cartModule',['readLocal', 'readData'])
   },
   created(){
+    // this.tokenFromLocalStorage()
+  },
+  watch: {
+    $route() {
+      this.readData()
+      console.log('hello')
+    }
+  },
+  mounted(){
     this.tokenFromLocalStorage()
+    this.readLocal()
+    this.readData()
+  },
+  beforeRouteEnter(to, from, next) {
+    this.readData()
+    next();
+  },
+  beforeRouteUpdate(to, from, next) {
+    this.readData()
+    next();
   }
 }
 </script>

@@ -76,7 +76,7 @@ export default {
                 if(this.getMessage){
                     alert(this.getMessage)
                 }else{
-                    window.location.reload()
+                    this.$router.push('/register')
                 }
             }
         },
