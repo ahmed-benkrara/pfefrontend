@@ -10,6 +10,15 @@ const packageGetters = {
     },
     getSuccess(state){
         return state.success
+    },
+    getPackageData(state){
+        return state.package.data 
+    },
+    getPackageLoading(state){
+        return state.package.loading 
+    },
+    getPackageSuccess(state){
+        return state.package.success 
     }
 }
 

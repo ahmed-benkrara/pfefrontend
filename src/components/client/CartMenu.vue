@@ -44,11 +44,11 @@
             </div>
             <div class="w-full flex justify-between border-[#d5d5d5] border-b border-t py-[10px] mt-[25px]">
                 <p class="text-[13px] text-[#434343] leading-[25px] font-karla font-[700] tracking-[3px] ">SUBTOTAL</p>
-                <p class="text-[13px] text-[red] leading-[25px] font-karla font-[800] tracking-[3px] ">${{ subtotal }}</p>
+                <p class="text-[13px] text-[red] leading-[25px] font-karla font-[800] tracking-[3px] ">${{ parseFloat(subtotal).toFixed(2) }}</p>
             </div>
             <div class="w-full flex justify-between mt-[25px] py-4 px-[8px]">
                 <p class="text-[16px] text-[black] font-ibm font-[700]">Total</p>
-                <p class="text-[16px] text-[black] font-ibm font-[700]">${{ subtotal }}</p>
+                <p class="text-[16px] text-[black] font-ibm font-[700]">${{ parseFloat(subtotal).toFixed(2) }}</p>
             </div>
             <button class="uppercase mt-[12px] outline-none text-white bg-[#333f48] hover:bg-black px-[20px] py-[14px] w-full text-[12px] tracking-[2px] font-karla font-bold block">check out</button>
             <p class="text-center font-ibm text-[13px] mt-6">Seamless ERP Solutions for Success</p>

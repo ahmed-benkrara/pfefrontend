@@ -1,6 +1,6 @@
 <template>
     <div>
-        <PackDetailsHeader/>
+        <PackDetailsHeader :title="title"/>
         <PackDetails/>
         <SuggestPacks/>
     </div>
@@ -14,15 +14,21 @@ import SuggestPacks from '@/components/client/SuggestPacks.vue'
 
 export default {
     name : 'PackDetailsView',
+    data(){
+        return{
+            title : ''
+        }
+    },
     mounted(){
+        this.title = this.$route.params.slug.split('-').join(' ')
         useHead({
-        title: `Package Details | ${process.env.VUE_APP_TITLE}`,
-        meta: [
-            {
-            name: 'description',
-            content: 'This is my page.',
-            },
-        ],
+            title: `${this.title} | ${process.env.VUE_APP_TITLE}`,
+            meta: [
+                {
+                name: 'description',
+                content: 'This is my page.',
+                },
+            ],
         })
     },
     components: {

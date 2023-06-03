@@ -32,6 +32,25 @@ const moduleActions = {
             }
             commit('setError', 'Something went wrong please try again later !')
         }
+    },
+    async getModule({ commit }, payload){
+        try{
+            commit('setLoading', true)
+            const response = await axios.get(`${process.env.VUE_APP_BASE_URL}/modules/${payload}`, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    // 'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+
+            commit('setModuleData', response.data.data)
+            commit('setModuleLoading', false)
+            commit('setModuleSuccess', true)
+        }catch(err){
+            commit('setModuleLoading', false)
+            commit('setModuleSuccess', false)
+        }
     }
 }
 

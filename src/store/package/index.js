@@ -8,7 +8,12 @@ const packageModule = {
         data : null,
         loading : false,
         error : '',
-        success : ''
+        success : '',
+        package : {
+            data : null,
+            loading : false,
+            success : ''
+        }
     },
     getters : packageGetters,
     mutations : packageMutations,

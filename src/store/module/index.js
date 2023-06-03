@@ -8,7 +8,12 @@ const moduleModule = {
         data : null,
         loading : false,
         error : '',
-        success : ''
+        success : '',
+        module : {
+            data : null,
+            loading : false,
+            success : ''
+        }
     },
     getters: moduleGetters,
     mutations: moduleMutations,

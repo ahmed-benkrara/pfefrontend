@@ -1,8 +1,8 @@
 <template>
     <div class="w-[calc(100%-20px)] mx-auto sm:h-[140px] md:h-[300px] plx flex items-center">
         <div class="sm:pl-0 md:pl-20 w-full">
-            <h1 class="w-full sm:text-center md:text-left text-white font-poppins sm:text-[23px] md:text-[40px] font-[500]">Inventory Package</h1>
-            <p class="w-full sm:text-center md:text-left text-white sm:text-[12px] md:text-[16px]">Home . Inventory Package</p>
+            <h1 class="w-full text-capitalize sm:text-center md:text-left text-white font-poppins sm:text-[23px] md:text-[40px] font-[500]">{{ this.title.slice(0,21) }}</h1>
+            <p class="w-full text-capitalize sm:text-center md:text-left text-white sm:text-[12px] md:text-[16px]">Home . {{ this.title.slice(0,21) }}</p>
         </div>
     </div>
 </template>
@@ -10,7 +10,8 @@
 <script>
 
 export default {
-    name : 'PackDetailsHeader'
+    name : 'PackDetailsHeader',
+    props : ['title']
 }
 </script>
 
@@ -23,5 +24,9 @@ export default {
         background-color: rgba(0, 0, 0, 0.247);
         background-blend-mode: multiply;
         background-position: top;
+    }
+
+    .text-capitalize{
+        text-transform: capitalize;
     }
 </style>

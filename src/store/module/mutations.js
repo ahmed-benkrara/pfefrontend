@@ -10,6 +10,15 @@ const moduleMutations = {
     },
     setSuccess(state, payload){
         state.success = payload
+    },
+    setModuleData(state, payload){
+        state.module.data = payload
+    },
+    setModuleLoading(state, payload){
+        state.module.loading = payload
+    },
+    setModuleSuccess(state, payload){
+        state.module.success = payload
     }
 }
 

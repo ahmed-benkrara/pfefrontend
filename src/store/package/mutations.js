@@ -10,6 +10,15 @@ const packageMutations = {
     },
     setSuccess(state, payload){
         state.success = payload
+    },
+    setPackageData(state, payload){
+        state.package.data = payload
+    },
+    setPackageLoading(state, payload){
+        state.package.loading = payload
+    },
+    setPackageSuccess(state, payload){
+        state.package.success = payload
     }
 }
 

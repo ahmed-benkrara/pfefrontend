@@ -1,153 +1,29 @@
 <template>
-    <div class="mt-[20px] px-4 py-8 mb-[40px]">
-        <h1 class="font-inter font-semibold sm:text-[24px] sm:mb-3 md:text-[20px]">You May Also Like</h1>
-        <div class="w-full md:px-8">
+    <div class="mt-[20px] px-4 py-8">
+        <h1 class="font-inter font-semibold sm:text-[24px] sm:mb-3 md:text-[20px]" v-if="ready && data.length > 0">Top Modules</h1>
+        <div class="w-full md:px-8" v-if="ready">
             <swiper
                 :slidesPerView="slidesPerView"
                 :spaceBetween="5"
                 :modules="modules"
                 class="mySwiper cursor-grabbing "
             >
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
+                <swiper-slide v-for="item in data" :key="item.id">
+                    <div class="mt-4 overflow-hidden block" data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
+                            <img class="filt cursor-pointer sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" :src="item.relationships.images[0].url" alt="">
+                            <div @click="addToCart(item.id)" class="absolute cursor-pointer top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
                                 <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
                             </div>
                         </div>
                         <div class="flex justify-between sm:w-[160px] md:w-[200px]">
                             <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
-                            </div>
-                        </div>
-                    </div>
-                </swiper-slide>
-                <swiper-slide>
-                    <div class="mt-4 overflow-hidden block">
-                        <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" src="https://images.unsplash.com/photo-1605884636476-ec4bd6c8d958?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="">
-                            <div class="absolute top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
-                        </div>
-                        <div class="flex justify-between sm:w-[160px] md:w-[200px]">
-                            <div class="text-[#1d242d]">
-                                <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400]">
-                                    Human Resource
-                                </p>
-                                <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">58$</p>
+                                <a :href="`/module/${item.id}/${slug(item.name)}`">
+                                    <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400] cursor-pointer">
+                                        {{ item.name.length <= 14 ? item.name : item.name.slice(0,11).concat("...") }}
+                                    </p>
+                                    <p class="mt-[-3px] font-poppins sm:text-[12px] md:text-[16px] font-bold">${{ item.price }}</p>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -158,25 +34,50 @@
 </template>
 
 <script>
-    import { Swiper, SwiperSlide } from 'swiper/vue';
-    import 'swiper/css';
-    import 'swiper/css/pagination';
-    import { Pagination } from 'swiper';
-    import AOS from 'aos';
-    import 'aos/dist/aos.css';
+    import { Swiper, SwiperSlide } from 'swiper/vue'
+    import 'swiper/css'
+    import 'swiper/css/pagination'
+    import { Pagination } from 'swiper'
+    import AOS from 'aos'
+    import 'aos/dist/aos.css'
+    import { mapGetters, mapActions } from 'vuex'
+    import slugify from 'slugify'
 
     export default {
-        name : "SuggestModules",
+        name : "SuggestedModules",
         data(){
             return{
                 modules: [Pagination],
-                slidesPerView : 5
+                slidesPerView : 5,
+                data : [],
+                ready : false
             }
         },
-        components :{
-            Swiper, SwiperSlide
+        computed: {
+            ...mapGetters('moduleModule', ['getData', 'getLoading', 'getError', 'getSuccess'])
+        },
+        watch: {
+            getSuccess(newValue){
+                if(newValue){
+                    this.data = [...this.getData]
+                    this.top10(this.getData)
+                }else{
+                    console.log('error')
+                }
+            }
         },
         methods: {
+            ...mapActions('moduleModule', ['getModules']),
+            ...mapActions('cartModule', ['readLocal', 'addLocal', 'deleteLocal']),
+            slug(name){
+                return slugify(name, {lower : true, replacement: '-'})
+            },
+            top10(data){
+                let modules = [...data]
+                const count = Math.min(10, modules.length);
+                this.data = Array.from({ length: count }, () => modules.splice(Math.floor(Math.random() * modules.length), 1)[0])
+                this.ready = true
+            },
             handleResponsiveSlides() {
                 if (window.innerWidth < 545) {
                     this.slidesPerView = 2;
@@ -194,6 +95,17 @@
                 else {
                     this.slidesPerView = 5;
                 }
+            },
+            addToCart(id){
+                let module = this.data.find(item => item.id == id)
+                let item = {
+                    id : module.id,
+                    type : 'module',
+                    image : module.relationships.images[0].url,
+                    price : module.price,
+                    name : module.name
+                }
+                this.addLocal(item)
             }
         },
         mounted() {
@@ -202,9 +114,20 @@
             AOS.init({
                 once: true
             })
+
+            if(this.getData != null){
+                this.data = [...this.getData]
+                this.top10(this.getData)
+                this.ready = true
+            }else{
+                this.getModules()
+            }
         },
         beforeUnmount() {
             window.removeEventListener("resize", this.handleResponsiveSlides);
+        },
+        components :{
+            Swiper, SwiperSlide
         },
     }
 </script>

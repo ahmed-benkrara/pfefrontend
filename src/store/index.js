@@ -4,9 +4,10 @@ import contactModule from './contact/index'
 import moduleModule from './module/index'
 import packageModule from './package/index'
 import cartModule from './cart/index'
+import reviewModule from './review/index'
 
 export default createStore({
   modules: {
-    authModule, contactModule, moduleModule, packageModule, cartModule
+    authModule, contactModule, moduleModule, packageModule, cartModule, reviewModule
   }
 })

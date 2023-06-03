@@ -1,6 +1,6 @@
 <template>
     <div>
-        <DetailsHeader/>
+        <DetailsHeader :title="title"/>
         <ModuleDetails/>
         <SuggestModules/>
     </div>
@@ -14,9 +14,15 @@ import SuggestModules from '@/components/client/SuggestModules.vue'
 
 export default {
     name : 'ModuleDetailsView',
+    data(){
+        return{
+            title : ''
+        }
+    },
     mounted(){
+        this.title = this.$route.params.slug.split('-').join(' ')
         useHead({
-        title: `Module Details | ${process.env.VUE_APP_TITLE}`,
+        title: `${this.title} | ${process.env.VUE_APP_TITLE}`,
         meta: [
             {
             name: 'description',

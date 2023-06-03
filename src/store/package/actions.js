@@ -30,6 +30,25 @@ const packageActions = {
             }
             commit('setError', 'Something went wrong please try again later !')
         }
+    },
+    async getPackage({ commit }, payload){
+        try{
+            commit('setLoading', true)
+            const response = await axios.get(`${process.env.VUE_APP_BASE_URL}/packages/${payload}`, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    // 'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+
+            commit('setPackageData', response.data.data)
+            commit('setPackageLoading', false)
+            commit('setPackageSuccess', true)
+        }catch(err){
+            commit('setPackageLoading', false)
+            commit('setPackageSuccess', false)
+        }
     }
 }
 

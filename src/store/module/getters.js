@@ -10,6 +10,15 @@ const moduleGetters = {
     },
     getSuccess(state){
         return state.success
+    },    
+    getModuleData(state){
+        return state.module.data 
+    },
+    getModuleLoading(state){
+        return state.module.loading 
+    },
+    getModuleSuccess(state){
+        return state.module.success 
     }
 }
 
