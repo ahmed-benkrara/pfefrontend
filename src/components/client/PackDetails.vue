@@ -46,7 +46,7 @@
                 </p>
                 <div class="flex mt-8 text-[14px]">
                     <!-- <button class="px-4 py-2 bg-[#1d242d] hover:bg-[#1d242d90] transition-all rounded-md text-[white]">Add to favorite</button> -->
-                    <button class="px-4 py-2 bg-[black] hover:bg-[#1d242d90] transition-all font-[300] font-poppins text-[white]">Add to cart</button>
+                    <button @click="addToCart()" class="px-4 py-2 bg-[black] hover:bg-[#1d242d90] transition-all font-[300] font-poppins text-[white]">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -55,6 +55,7 @@
             <p @click="tabchange($event,1)" class="border-b py-4 cursor-pointer text-[15px] text-[gray] font-poppins font-[500]">Rating & Reviews</p>
         </div>
         <ProductReviews type="package" :id="getPackageData.id" :reviews="getPackageData.relationships.reviews" v-if="tab == 1 && getPackageSuccess == true"/>
+        <IncludedModules v-if="tab == 0 && getPackageSuccess == true" :data="getPackageData.relationships.modules"/>
     </div>
 </template>
 
@@ -64,6 +65,7 @@ import 'swiper/css'
 import 'swiper/css/pagination'
 import { Pagination } from 'swiper'
 import ProductReviews from './ProductReviews.vue'
+import IncludedModules from './IncludedModules.vue'
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
@@ -89,6 +91,7 @@ export default {
     methods: {
         ...mapActions('packageModule', ['getPackage']),
         ...mapMutations('packageModule', ['setPackageData']),
+        ...mapActions('cartModule', ['readLocal', 'addLocal', 'deleteLocal']),
         setGalleryItem(e){
             document.getElementById('maingallery').src = e.target.src
         },
@@ -108,10 +111,20 @@ export default {
             }
             this.getPackageData.rate = rate
             this.setPackageData(this.getPackageData)
+        },
+        addToCart(){
+            let item = {
+                id : this.getPackageData.id,
+                type : 'package',
+                image : this.getPackageData.relationships.modules[0].images[0].url,
+                price : this.getPackageData.price,
+                name : this.getPackageData.name
+            }
+            this.addLocal(item)
         }
     },
     components: {
-        Swiper, SwiperSlide, ProductReviews
+        Swiper, SwiperSlide, ProductReviews, IncludedModules
     },
     async beforeEnter(to, from, next){
         try{

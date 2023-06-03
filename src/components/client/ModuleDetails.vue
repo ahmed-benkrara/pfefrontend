@@ -51,7 +51,7 @@
                 </p>
                 <div class="flex mt-8 text-[14px]">
                     <!-- <button class="px-4 py-2 bg-[#1d242d] hover:bg-[#1d242d90] transition-all rounded-md text-[white]">Add to favorite</button> -->
-                    <button class="px-6 py-2 bg-[black] hover:bg-[#1d242d90] transition-all font-[300] font-poppins text-[white]">Add to cart</button>
+                    <button @click="addToCart()" class="px-6 py-2 bg-[black] hover:bg-[#1d242d90] transition-all font-[300] font-poppins text-[white]">Add to cart</button>
                 </div>
             </div>
         </div>
@@ -94,6 +94,7 @@ export default {
     methods: {
         ...mapActions('moduleModule', ['getModule']),
         ...mapMutations('moduleModule', ['setModuleData']),
+        ...mapActions('cartModule', ['readLocal', 'addLocal', 'deleteLocal']),
         setGalleryItem(e){
             document.getElementById('maingallery').src = e.target.src
         },
@@ -113,6 +114,16 @@ export default {
             }
             this.getModuleData.rate = rate
             this.setModuleData(this.getModuleData)
+        },
+        addToCart(){
+            let item = {
+                id : this.getModuleData.id,
+                type : 'module',
+                image : this.getModuleData.relationships.images[0].url,
+                price : this.getModuleData.price,
+                name : this.getModuleData.name
+            }
+            this.addLocal(item)
         }
     },
     components: {

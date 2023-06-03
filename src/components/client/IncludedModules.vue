@@ -1,7 +1,9 @@
 <template>
     <div class="mt-[20px] px-4 py-8">
-        <h1 class="font-inter font-semibold sm:text-[24px] sm:mb-3 md:text-[20px]" v-if="ready && data.length > 0">Top Modules</h1>
-        <div class="w-full md:px-8" v-if="ready">
+        <!-- <h1 class="font-inter font-semibold sm:text-[24px] sm:mb-3 md:text-[20px]" v-if="ready && data.length > 0">Top Modules</h1> -->
+        <!-- <h1 class="mb-8 font-[500] text-[20px]">Pack's modules</h1> -->
+        
+        <div class="w-full md:px-8">
             <swiper
                 :slidesPerView="slidesPerView"
                 :spaceBetween="5"
@@ -9,12 +11,9 @@
                 class="mySwiper cursor-grabbing "
             >
                 <swiper-slide v-for="item in data" :key="item.id">
-                    <div class="mt-4 overflow-hidden block">
+                    <div class="mt-4 overflow-hidden block" data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
-                            <img class="filt cursor-pointer sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" :src="item.relationships.images[0].url" alt="">
-                            <div @click="addToCart(item.id)" class="absolute cursor-pointer top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
-                                <img class="block sm:w-[14px] md:w-[16px]" src="@/assets/icons/whitecart.svg" alt="">
-                            </div>
+                            <img class="filt cursor-pointer sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" :src="item.images[0].url" alt="">
                         </div>
                         <div class="flex justify-between sm:w-[160px] md:w-[200px]">
                             <div class="text-[#1d242d]">
@@ -40,43 +39,22 @@
     import { Pagination } from 'swiper'
     import AOS from 'aos'
     import 'aos/dist/aos.css'
-    import { mapGetters, mapActions } from 'vuex'
+    import { mapActions } from 'vuex'
     import slugify from 'slugify'
 
     export default {
-        name : "SuggestedModules",
+        name : "IncludedModules",
+        props : ['data'],
         data(){
             return{
                 modules: [Pagination],
                 slidesPerView : 5,
-                data : [],
-                ready : false
-            }
-        },
-        computed: {
-            ...mapGetters('moduleModule', ['getData', 'getLoading', 'getError', 'getSuccess'])
-        },
-        watch: {
-            getSuccess(newValue){
-                if(newValue){
-                    this.data = [...this.getData]
-                    this.top10(this.getData)
-                }else{
-                    console.log('error')
-                }
             }
         },
         methods: {
-            ...mapActions('moduleModule', ['getModules']),
             ...mapActions('cartModule', ['readLocal', 'addLocal', 'deleteLocal']),
             slug(name){
                 return slugify(name, {lower : true, replacement: '-'})
-            },
-            top10(data){
-                let modules = [...data]
-                const count = Math.min(10, modules.length);
-                this.data = Array.from({ length: count }, () => modules.splice(Math.floor(Math.random() * modules.length), 1)[0])
-                this.ready = true
             },
             handleResponsiveSlides() {
                 if (window.innerWidth < 545) {
@@ -114,14 +92,6 @@
             AOS.init({
                 once: true
             })
-
-            if(this.getData != null){
-                this.data = [...this.getData]
-                this.top10(this.getData)
-                this.ready = true
-            }else{
-                this.getModules()
-            }
         },
         beforeUnmount() {
             window.removeEventListener("resize", this.handleResponsiveSlides);

@@ -9,7 +9,7 @@
                 class="mySwiper cursor-grabbing "
             >
                 <swiper-slide v-for="item in data" :key="item.id">
-                    <div class="mt-4 overflow-hidden block" data-aos="zoom-in" data-aos-duration="800" data-aos-easing="ease-in-sine">
+                    <div class="mt-4 overflow-hidden block">
                         <div class="relative h-fit w-fit test rounded-[5px] overflow-hidden">
                             <img class="filt cursor-pointer sm:w-[160px] md:w-[200px] sm:h-[210px] md:h-[250px] object-cover block" :src="item.relationships.modules[0].images[0].url" alt="">
                             <div @click="addToCart(item.id)" class="absolute cursor-pointer top-[5px] right-[5px] h-fit w-fit sm:pr-[8px] md:pr-[10px] sm:pl-[6px] md:pl-[8px] sm:py-[6px] md:py-[8px] bg-[#1d242d] text-[white] rounded-[5px] flex justify-center items-center">
