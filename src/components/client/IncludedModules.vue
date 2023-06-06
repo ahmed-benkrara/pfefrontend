@@ -17,7 +17,7 @@
                         </div>
                         <div class="flex justify-between sm:w-[160px] md:w-[200px]">
                             <div class="text-[#1d242d]">
-                                <a :href="`/module/${item.id}/${slug(item.name)}`">
+                                <a :href="`/module/${item.id}/${slug(item.name)}`" target="__blank">
                                     <p class="sm:text-[12px] md:text-[16px] mt-[-2px] font-poppins font-[400] cursor-pointer">
                                         {{ item.name.length <= 14 ? item.name : item.name.slice(0,11).concat("...") }}
                                     </p>

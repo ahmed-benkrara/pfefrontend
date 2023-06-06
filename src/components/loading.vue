@@ -1,5 +1,5 @@
 <template>
-    <div class="fixed w-full h-full bg-[#00000061] z-[1000] flex items-center justify-center ">
+    <div class="fixed w-full h-full z-[1000] flex items-center justify-center ">
         <div class="lds-hourglass"></div>
     </div>
 </template>

@@ -25,15 +25,16 @@ const authActions = {
             }
         }
     },
-    tokenFromLocalStorage({commit}){
+    tokenFromLocalStorage({commit, dispatch}){
         const token = window.localStorage.getItem('token')
         if(token){
             commit('SET_TOKEN', token)
+            dispatch('userRoleByToken')
         }
     },
     async userRoleByToken({getters, commit}){
         try{
-            await axios.get(`${process.env.VUE_APP_BASE_URL}/user`, {
+            const res = await axios.get(`${process.env.VUE_APP_BASE_URL}/user`, {
                 headers : {
                     'Accept': 'application/vnd.api+json',
                     'Content-Type': 'application/vnd.api+json',
@@ -41,6 +42,7 @@ const authActions = {
                 }
             })
             commit('setIsTokenValid', true)
+            commit('setUser', res.data.data)
         }catch(err){
             commit('setIsTokenValid', false)
             commit('clearToken')
@@ -74,6 +76,62 @@ const authActions = {
             }
             commit('setRegisterErrors', registerErrors)
             commit('setRegisterSuccess', false)
+        }
+    },
+    async updateUser({ dispatch, getters }, payload){
+        try{
+            await axios.patch(`${process.env.VUE_APP_BASE_URL}/user/${payload.id}`, { fname : payload.fname, lname : payload.lname, email : payload.email }, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${getters.getToken}`,
+                }
+            })
+            
+            try{
+                await axios.post(`${process.env.VUE_APP_BASE_URL}/user/${payload.id}`, { phone : payload.phone, address : payload.address, _method : 'PATCH' }, {
+                    headers : {
+                        'Accept': 'application/vnd.api+json',
+                        'Content-Type': 'application/vnd.api+json',
+                        'Authorization': `Bearer ${getters.getToken}`,
+                    }
+                })
+            }catch(err){
+                console.log(err)
+            }
+            dispatch('userRoleByToken')
+        }catch(err){
+            console.log(err)
+        }
+    },
+    async updatePassword({ commit, getters } ,payload){
+        try{
+            await axios.patch(`${process.env.VUE_APP_BASE_URL}/password/${getters.getUser.id}`, { current : payload.current, newpassword : payload.newpassword}, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${getters.getToken}`,
+                }
+            })
+
+            commit('setPassword', true)
+        }catch(err){
+            commit('setPassword', false)
+        }
+    },
+    async logout({ getters, commit }){
+        try{
+            await axios.post(`${process.env.VUE_APP_BASE_URL}/logout`,{},{
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${getters.getToken}`,
+                }
+            })
+            commit('clearToken')
+            window.location.reload()
+        }catch(err){
+            console.log('error logout')
         }
     }
 }

@@ -16,6 +16,12 @@ const authGetters = {
     },
     getRegisterErrors(state){
         return state.registerErrors
+    },
+    getUser(state){
+        return state.user
+    },
+    getPassword(state){
+        return state.password
     }
 }
 

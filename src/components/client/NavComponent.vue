@@ -4,8 +4,8 @@
     </div>
     <nav class="w-full sm:py-[14px] bg-re sm:px-[10px] md:py-[16px] md:px-[20px] font-inter flex justify-between items-center">
         <div class="sm:flex lg:hidden">
-            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" src="@/assets/icons/mail.svg" alt="">
-            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" @click="showmenu()" src="@/assets/icons/menu.svg" alt="">
+            <router-link to="/contact"><img class="block mx-2 sm:w-[20px] md:w-[22px] cursor-pointer" src="@/assets/icons/mail.svg" alt=""></router-link>
+            <img class="block mx-2 sm:w-[20px] md:w-[22px] cursor-pointer" @click="showmenu()" src="@/assets/icons/menu.svg" alt="">
         </div>
         <h1 class="title font-semibold sm:text-[20px] md:text-[22px] cursor-pointer">{{ title }}</h1>
         <ul class="sm:hidden lg:flex text-[16px]">
@@ -16,14 +16,22 @@
             <li class="mx-2 cursor-pointer" ><router-link to="/about">About Us</router-link></li>
             <li class="mx-2 cursor-pointer" ><router-link to="/contact">Contact</router-link></li>
         </ul>
-        <div class="flex text-[20px]">
-            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer cart" @click="showcart()" src="@/assets/icons/cart.svg" alt="">
-            <img class="block mx-2 sm:w-[20px]  md:w-[22px] cursor-pointer" src="@/assets/icons/heart.svg" alt="">
+        <div class="flex items-center text-[20px]">
+            <img class="block mx-2 sm:w-[20px] md:w-[22px] cursor-pointer cart" @click="showcart()" src="@/assets/icons/cart.svg" alt="">
+            <router-link to="/account/favorite"><img class="block mx-2 sm:w-[20px] md:w-[22px] cursor-pointer" src="@/assets/icons/heart.svg" alt=""></router-link>
             <div class="mx-2 relative">
                 <i class="cursor-pointer fa-regular fa-user" @click="toggle($event)"></i>
                 <ul class="topbar-link-wrapper font-poppins font-[300] text-[13px] tracking-[2px]">
-                    <li class="mb-[6px] cursor-pointer w-full"><router-link to="/login">Login</router-link></li>
-                    <li class=" cursor-pointer w-full"><router-link to="/register">register</router-link></li>
+                    <div v-if="getUser == null">
+                        <li class="mb-[6px] cursor-pointer w-full"><router-link to="/login">Login</router-link></li>
+                        <li class=" cursor-pointer w-full"><router-link to="/register">Register</router-link></li>
+                    </div>
+                    <div v-if="getUser != null">
+                        <li class="mb-[6px] cursor-pointer w-full"><router-link to="/account/profile">Profile</router-link></li>
+                        <li class="mb-[6px] cursor-pointer w-full"><router-link to="/account/password">Settings</router-link></li>
+                        <li class="mb-[6px] cursor-pointer w-full"><router-link to="/account/favorite">Favorites</router-link></li>
+                        <li @click="logout()" class=" cursor-pointer w-full">Logout</li>
+                    </div>
                 </ul>
             </div>
         </div>
@@ -54,6 +62,7 @@
 
 <script>
 import CartMenu from './CartMenu.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     name : 'NavComponent',
@@ -62,7 +71,11 @@ export default {
             title : ''
         }
     },
+    computed: {
+        ...mapGetters('authModule', ['getUser'])
+    },
     methods: {
+        ...mapActions('authModule', ['logout']),
         showcart(){
             let cart = document.getElementById('cart')
             cart.classList.remove('cartclose')

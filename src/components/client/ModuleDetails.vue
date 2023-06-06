@@ -51,7 +51,8 @@
                 </p>
                 <div class="flex mt-8 text-[14px]">
                     <!-- <button class="px-4 py-2 bg-[#1d242d] hover:bg-[#1d242d90] transition-all rounded-md text-[white]">Add to favorite</button> -->
-                    <button @click="addToCart()" class="px-6 py-2 bg-[black] hover:bg-[#1d242d90] transition-all font-[300] font-poppins text-[white]">Add to cart</button>
+                    <button @click="addToCart()" class="px-6 py-2 bg-[black] hover:bg-[#1d242d90] transition-all font-[300] font-poppins text-[white] mr-2">Add to cart</button>
+                    <button v-if="getUser != null" @click="addToFavorite()" class="px-4 py-2 bg-[black] hover:bg-[#1d242d90] transition-all font-[300] font-poppins text-[white]"><i class="fa-solid fa-bookmark"></i></button>
                 </div>
             </div>
         </div>
@@ -80,7 +81,9 @@ export default {
         }
     },
     computed : {
-        ...mapGetters('moduleModule', ['getModuleData', 'getModuleLoading', 'getModuleSuccess'])
+        ...mapGetters('moduleModule', ['getModuleData', 'getModuleLoading', 'getModuleSuccess']),
+        ...mapGetters('favoriteModule', ['getSuccess']),
+        ...mapGetters('authModule', ['getUser']),
     },
     watch : {
         getModuleSuccess(x){
@@ -95,6 +98,7 @@ export default {
         ...mapActions('moduleModule', ['getModule']),
         ...mapMutations('moduleModule', ['setModuleData']),
         ...mapActions('cartModule', ['readLocal', 'addLocal', 'deleteLocal']),
+        ...mapActions('favoriteModule', ['addFavorite']),
         setGalleryItem(e){
             document.getElementById('maingallery').src = e.target.src
         },
@@ -124,6 +128,15 @@ export default {
                 name : this.getModuleData.name
             }
             this.addLocal(item)
+        },
+        addToFavorite(){
+            let fav = {
+                user_id : this.getUser.id,
+                type : 'module',
+                modele_id : this.getModuleData.id
+            }
+
+            this.addFavorite(fav)
         }
     },
     components: {

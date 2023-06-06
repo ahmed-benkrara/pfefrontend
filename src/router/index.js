@@ -20,6 +20,8 @@ import TestView from '../views/TestView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
+import user from '@/guards/userGuard'
+import checkout from '@/guards/checkoutGuard'
 
 const routes = [
   // {
@@ -32,6 +34,10 @@ const routes = [
   //   component : RegisterView,
   //   beforeEnter : guest
   // },
+  {
+    path : '/test',
+    component : TestView
+  },
   {
     path : '/forgot',
     component : ForgotView
@@ -92,20 +98,18 @@ const routes = [
         component : CartView
       },
       {
-        path : 'test',
-        component : TestView
-      },
-      {
         path : 'checkout',
-        component : CheckoutView
+        component : CheckoutView,
+        beforeEnter : checkout
       },
       {
         path : '/account',
         component : AccountView,
+        beforeEnter : user,
         children : [
           {
             path : 'profile',
-            component : AccountDetailsView
+            component : AccountDetailsView,
           },
           {
             path : 'password',

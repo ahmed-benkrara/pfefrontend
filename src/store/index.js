@@ -5,9 +5,18 @@ import moduleModule from './module/index'
 import packageModule from './package/index'
 import cartModule from './cart/index'
 import reviewModule from './review/index'
+import favoriteModule from './favorite/index'
+import orderModule from './order/index'
 
 export default createStore({
   modules: {
-    authModule, contactModule, moduleModule, packageModule, cartModule, reviewModule
+    authModule, 
+    contactModule, 
+    moduleModule, 
+    packageModule, 
+    cartModule, 
+    reviewModule, 
+    favoriteModule, 
+    orderModule
   }
 })

@@ -28,6 +28,12 @@ const authMutations = {
     },
     setRegisterSuccess(state, payload){
         state.registerErrors.success = payload
+    },
+    setUser(state, payload){
+        state.user = payload
+    },
+    setPassword(state, payload){
+        state.password = payload
     }
 }
 

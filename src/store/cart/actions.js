@@ -34,9 +34,9 @@ const cartActions = {
 
             let send = {}
             if(payload.type.toLowerCase() == 'module'){
-                send = {cart_id : getters.getData.filter(item => item.user_id == user.data.id)[0].id, quantity : 1, type : payload.type, modele_id : payload.id}
+                send = {cart_id : getters.getData.filter(item => item.user_id == user.data.data.id)[0].id, quantity : 1, type : payload.type, modele_id : payload.id}
             }else{
-                send = {cart_id : getters.getData.filter(item => item.user_id == user.data.id)[0].id, quantity : 1, type : payload.type, package_id : payload.id}
+                send = {cart_id : getters.getData.filter(item => item.user_id == user.data.data.id)[0].id, quantity : 1, type : payload.type, package_id : payload.id}
             }
 
             await axios.post(`${process.env.VUE_APP_BASE_URL}/cartitems`, send,{
@@ -53,7 +53,7 @@ const cartActions = {
                     'Authorization': `Bearer ${token}`,
                 }
             })
-            commit('setData', response.data.data.filter(item => item.user_id == user.data.id))
+            commit('setData', response.data.data.filter(item => item.user_id == user.data.data.id))
         }
     },
     deleteLocal({commit, getters}, index){
@@ -100,8 +100,8 @@ const cartActions = {
                     }
                 })
 
-                if(response.data.data.filter(item => item.user_id == user.data.id).length == 0){
-                    const newcart = await axios.post(`${process.env.VUE_APP_BASE_URL}/cart`, { user_id : user.data.id }, {
+                if(response.data.data.filter(item => item.user_id == user.data.data.id).length == 0){
+                    const newcart = await axios.post(`${process.env.VUE_APP_BASE_URL}/cart`, { user_id : user.data.data.id }, {
                         headers : {
                             'Accept': 'application/vnd.api+json',
                             'Content-Type': 'application/vnd.api+json',
@@ -112,11 +112,11 @@ const cartActions = {
                     response.data.data.push(newcart)
                 }
 
-                commit('setData', response.data.data.filter(item => item.user_id == user.data.id))
+                commit('setData', response.data.data.filter(item => item.user_id == user.data.data.id))
                 commit('setSuccess', true)
-                let data = [...response.data.data.filter(item => item.user_id == user.data.id)]
+                let data = [...response.data.data.filter(item => item.user_id == user.data.data.id)]
                 const local = getters.getLocal
-                response.data.data.filter(item => item.user_id == user.data.id).forEach((item, index) => {
+                response.data.data.filter(item => item.user_id == user.data.data.id).forEach((item, index) => {
                     let cartItem = null
                     let dataIndex = index
                     item.items.forEach(async (item, index) => {
@@ -144,8 +144,8 @@ const cartActions = {
                     })
                 })
 
-                if(response.data.data.filter(item => item.user_id == user.data.id).length > 0){
-                    let data = [...response.data.data.filter(item => item.user_id == user.data.id)]
+                if(response.data.data.filter(item => item.user_id == user.data.data.id).length > 0){
+                    let data = [...response.data.data.filter(item => item.user_id == user.data.data.id)]
                     let id = data[0].id
                     local.forEach(async (item, index) => {
                         let payload = {}
@@ -204,7 +204,6 @@ const cartActions = {
                     'Authorization': `Bearer ${token}`,
                 }
             })
-
         }
 
         let response = await axios.get(`${process.env.VUE_APP_BASE_URL}/cart`, {
@@ -214,7 +213,7 @@ const cartActions = {
                 'Authorization': `Bearer ${token}`,
             }
         })
-        commit('setData', response.data.data.filter(item => item.user_id == user.data.id))
+        commit('setData', response.data.data.filter(item => item.user_id == user.data.data.id))
     }
 }
 
