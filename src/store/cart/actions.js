@@ -81,6 +81,7 @@ const cartActions = {
         }
     },
     async readData({rootGetters, commit, getters, dispatch}){
+        commit('setLoading', true)
         const token = rootGetters['authModule/getToken']
         if(token != null){
             try{
@@ -174,7 +175,9 @@ const cartActions = {
                     })
                 }
                 commit('setLocal',[])
+                commit('setLoading', false)
             }catch(err){
+                commit('setLoading', false)
                 commit('setSuccess', false)
             }
         }

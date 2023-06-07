@@ -9,7 +9,7 @@ const cartModule = {
         local : [],
         error : '',
         success : false,
-        loading : false
+        loading : ''
     },
     getters : cartGetters,
     mutations : cartMutations,

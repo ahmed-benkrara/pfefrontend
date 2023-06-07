@@ -118,8 +118,8 @@ export default  {
             fname: this.getUser.fname,
             lname: this.getUser.lname,
             email: this.getUser.email,
-            phone: this.getUser.details.phone != null && this.getUser.details.phone != '' ? this.getUser.details.phone : '',
-            address: this.getUser.details.address != null && this.getUser.details.address != '' ? this.getUser.details.address : ''
+            phone: this.getUser.details != null && this.getUser.details.phone != null && this.getUser.details.phone != '' ? this.getUser.details.phone : '',
+            address: this.getUser.details != null && this.getUser.details.address != null && this.getUser.details.address != '' ? this.getUser.details.address : ''
         }
     },
 }

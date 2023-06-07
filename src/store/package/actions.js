@@ -49,6 +49,21 @@ const packageActions = {
             commit('setPackageLoading', false)
             commit('setPackageSuccess', false)
         }
+    },
+    async postPackage({ rootGetters, commit }, payload){
+        try{
+            const accessToken = rootGetters['authModule/getToken']
+            await axios.post(`${process.env.VUE_APP_BASE_URL}/packages`, payload, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+            commit('setSuccess', true)
+        }catch(err){
+            commit('setSuccess', false)
+        }
     }
 }
 

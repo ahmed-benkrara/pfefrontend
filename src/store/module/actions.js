@@ -51,6 +51,40 @@ const moduleActions = {
             commit('setModuleLoading', false)
             commit('setModuleSuccess', false)
         }
+    },
+    async postModule({ commit, rootGetters  }, payload){
+        try{
+            const accessToken = rootGetters['authModule/getToken']
+            const response = await axios.post(`${process.env.VUE_APP_BASE_URL}/modules`, payload.module, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+            
+            const module_id = response.data.data.id
+            let form = new FormData()
+            for(let i=0; i<payload.images.length; i++){
+
+                form = new FormData()
+                form.append('url', payload.images[i])
+                form.append('isposter', 0)
+                form.append('modele_id', module_id)
+                
+                await axios.post(`${process.env.VUE_APP_BASE_URL}/moduleimage`, form, {
+                    headers : {
+                        'Accept': 'application/vnd.api+json',
+                        'Content-Type': 'application/vnd.api+json',
+                        'Authorization': `Bearer ${accessToken}`,
+                    }
+                })
+            }
+
+            commit('setSuccess', true)
+        }catch(err){
+            commit('setSuccess', false)
+        }
     }
 }
 

@@ -1,10 +1,4 @@
 <template>
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed">
-    <!-- Sidebar Start -->
-    <SideNav />
-    <!--  Sidebar End -->
-    <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
       <HeaderAdmin />
@@ -276,7 +270,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s4.jpg" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="@/assets/images/products/s4.jpg" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">Boat Headphone</h6>
@@ -296,7 +290,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s5.jpg" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="@/assets/images/products/s5.jpg" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">MacBook Air Pro</h6>
@@ -316,7 +310,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s7.jpg" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="@/assets/images/products/s7.jpg" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">Red Valvet Dress</h6>
@@ -336,7 +330,7 @@
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s11.jpg" class="card-img-top rounded-0" alt="..."></a>
+                <a href="javascript:void(0)"><img src="@/assets/images/products/s11.jpg" class="card-img-top rounded-0" alt="..."></a>
                 <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">Cute Soft Teddybear</h6>
@@ -359,73 +353,18 @@
         </div>
       </div>
     </div>
-    
-  </div>
 </template>
 
 <script>
-import SideNav from '@/components/admin/SideNav.vue';
 import HeaderAdmin from '@/components/admin/HeaderAdmin.vue';
 
 export default {
-    name: 'TestView',
-    mounted() {
-      const script1 = document.createElement('script');
-      script1.src = 'https://themewagon.github.io/Modernize/src/assets/libs/jquery/dist/jquery.min.js';
-      script1.async = false;
-      script1.type = 'text/javascript';
-      document.head.appendChild(script1);
+    name : 'DashboardView',
+    mounted(){
 
-      const script2 = document.createElement('script');
-      script2.src = 'https://themewagon.github.io/Modernize/src/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js';
-      script2.async = false;
-      script2.type = 'text/javascript';
-      document.head.appendChild(script2);
-
-      const script3 = document.createElement('script');
-      script3.src = 'https://themewagon.github.io/Modernize/src/assets/js/sidebarmenu.js';
-      script3.async = false;
-      script3.type = 'text/javascript';
-      document.head.appendChild(script3);
-
-      const script4 = document.createElement('script');
-      script4.src = 'https://themewagon.github.io/Modernize/src/assets/js/app.min.js';
-      script4.async = false;
-      script4.type = 'text/javascript';
-      document.head.appendChild(script4);
-
-      const script5 = document.createElement('script');
-      script5.src = 'https://themewagon.github.io/Modernize/src/assets/libs/apexcharts/dist/apexcharts.min.js';
-      script5.async = false;
-      script5.type = 'text/javascript';
-      document.head.appendChild(script5);
-
-      const script6 = document.createElement('script');
-      script6.src = 'https://themewagon.github.io/Modernize/src/assets/libs/simplebar/dist/simplebar.js';
-      script6.async = false;
-      script6.type = 'text/javascript';
-      document.head.appendChild(script6);
-
-      const script7 = document.createElement('script');
-      script7.src = 'https://themewagon.github.io/Modernize/src/assets/js/dashboard.js';
-      script7.async = false;
-      script7.type = 'text/javascript';
-      document.head.appendChild(script7);
-
-      const script8 = document.createElement('link');
-      script8.href = 'https://themewagon.github.io/Modernize/src/assets/css/styles.min.css';
-      script8.async = false;
-      script8.rel = 'stylesheet';
-      document.head.appendChild(script8);
-
-  },
-  components : {
-    SideNav, HeaderAdmin
-  }
+    },
+    components : {
+        HeaderAdmin
+    }
 }
-
 </script>
-
-<style scoped>
-    /* @import url('https://themewagon.github.io/Modernize/src/assets/css/styles.min.css'); */
-</style>

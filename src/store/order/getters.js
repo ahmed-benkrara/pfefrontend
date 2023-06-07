@@ -1,5 +1,5 @@
 const orderGetters = {
-    setSuccess(state){
+    getSuccess(state){
         return state.success
     }
 }

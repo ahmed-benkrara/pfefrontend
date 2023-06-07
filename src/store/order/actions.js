@@ -33,13 +33,29 @@ const orderActions = {
                 })
             }
             const cart = rootGetters['cartModule/getData']
-            await axios.delete(`${process.env.VUE_APP_BASE_URL}/cart/${cart[0].id}`,{
+            await axios.delete(`${process.env.VUE_APP_BASE_URL}/itemsbycart/${cart[0].id}`,{
                 headers : {
                     'Accept': 'application/vnd.api+json',
                     'Content-Type': 'application/vnd.api+json',
                     'Authorization': `Bearer ${token}`,
                 }
             })
+            const user = rootGetters['authModule/getUser']
+            const orderData = {
+                fname : user.fname,
+                lname : user.lname,
+                email : user.email,
+                items : payload.items
+            }
+
+            await axios.post(`${process.env.VUE_APP_BASE_URL}/ordermail`, orderData,{
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+
             commit('cartModule/setData', null, { root: true })
             commit('setSuccess', true)
         }catch(err){

@@ -12,7 +12,7 @@
                 <div class="w-full h-fit mt-4">
                   <label for="email" class="text-[14px] font-poppins font-[500] block mb-2">Phone</label>
                   <!-- <input class=" border border-gray-300 text-gray-900 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" id="email" type="text"> -->
-                  <input type="text" :value="getUser.details.phone ? getUser.details.phone : ''" placeholder="Phone" class="bg-[#fafafa] text-[15px] outline-none px-4 py-[10px] border w-full block mb-4">
+                  <input type="text" :value="getUser.details != null && getUser.details.phone != null ? getUser.details.phone : ''" placeholder="Phone" class="bg-[#fafafa] text-[15px] outline-none px-4 py-[10px] border w-full block mb-4">
                 </div>
                 <h1 class="text-[18px] text-[#4b5563] font-[500] my-[26px] ">Payment Methods</h1>
                 <div ref="paypal"></div>
@@ -69,6 +69,7 @@ export default {
   computed : {
     ...mapGetters('authModule',['getUser']),
     ...mapGetters('cartModule',['getData']),
+    ...mapGetters('orderModule',['getSuccess']),
   },
   watch : {
     getData: {
@@ -76,6 +77,11 @@ export default {
           this.calcul()
       },
       deep: true
+    },
+    getSuccess(value){
+      if(value == true){
+        location.reload(true)
+      }
     }
   },
   mounted() {

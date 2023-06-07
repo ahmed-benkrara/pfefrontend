@@ -18,6 +18,12 @@ import PasswordView from '../views/PasswordView.vue'
 import FavoriteView from '../views/FavoriteView.vue'
 import TestView from '../views/TestView.vue'
 
+//Admin
+import MainAdminView from '@/views/Admin/MainAdminView.vue'
+import DashboardView from '@/views/Admin/DashboardView.vue'
+import CreateModuleView from '@/views/Admin/Modules/CreateModuleView.vue'
+import CreatePackageView from '@/views/Admin/Packages/CreatePackageView.vue'
+
 //Guards
 import guest from '@/guards/guestGuard'
 import user from '@/guards/userGuard'
@@ -49,6 +55,10 @@ const routes = [
   {
     path : '/account',
     redirect : '/account/profile'
+  },
+  {
+    path : '/admin',
+    redirect : '/admin/dashboard'
   },
   {
     path: '/',
@@ -123,16 +133,26 @@ const routes = [
       }
     ]
   },
-  // {
-  //   path: '/about',
-  //   name: 'about',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  // }
+  {
+    path: '/admin',
+    name: 'adminmain',
+    component: MainAdminView,
+    children : [
+      {
+        path : 'dashboard',
+        component : DashboardView
+      },
+      {
+        path : 'module/create',
+        component : CreateModuleView
+      },
+      {
+        path : 'package/create',
+        component : CreatePackageView
+      },
+    ]
+  }
 ]
-
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),

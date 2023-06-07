@@ -12,11 +12,11 @@ export default {
   },
   created(){
     // this.tokenFromLocalStorage()
+    // this.readData()
   },
   watch: {
     $route() {
       this.readData()
-      console.log('hello')
     }
   },
   mounted(){

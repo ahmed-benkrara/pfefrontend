@@ -50,7 +50,7 @@
                 <p class="text-[16px] text-[black] font-ibm font-[700]">Total</p>
                 <p class="text-[16px] text-[black] font-ibm font-[700]">${{ parseFloat(subtotal).toFixed(2) }}</p>
             </div>
-            <router-link :to="'checkout'">
+            <router-link :to="'/checkout'">
                 <button class="uppercase mt-[12px] outline-none text-white bg-[#333f48] hover:bg-black px-[20px] py-[14px] w-full text-[12px] tracking-[2px] font-karla font-bold block">check out</button>
             </router-link>
             <p class="text-center font-ibm text-[13px] mt-6">Seamless ERP Solutions for Success</p>
