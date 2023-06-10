@@ -13,7 +13,8 @@ const packageModule = {
             data : null,
             loading : false,
             success : ''
-        }
+        },
+        delete : ''
     },
     getters : packageGetters,
     mutations : packageMutations,

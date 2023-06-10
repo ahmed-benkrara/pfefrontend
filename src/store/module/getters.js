@@ -19,6 +19,9 @@ const moduleGetters = {
     },
     getModuleSuccess(state){
         return state.module.success 
+    },
+    getDelete(state){
+        return state.delete
     }
 }
 

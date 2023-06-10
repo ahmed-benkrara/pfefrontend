@@ -21,13 +21,26 @@ import TestView from '../views/TestView.vue'
 //Admin
 import MainAdminView from '@/views/Admin/MainAdminView.vue'
 import DashboardView from '@/views/Admin/DashboardView.vue'
+
 import CreateModuleView from '@/views/Admin/Modules/CreateModuleView.vue'
+import ModulesListView from '@/views/Admin/Modules/ModulesListView.vue'
+import EditModuleView from '@/views/Admin/Modules/EditModuleView.vue'
+
 import CreatePackageView from '@/views/Admin/Packages/CreatePackageView.vue'
+import PackagesListView from '@/views/Admin/Packages/PackagesListView.vue'
+import EditPackageView from '@/views/Admin/Packages/EditPackageView.vue'
+
+import CreateUserView from '@/views/Admin/Users/CreateUserView.vue'
+import UsersListView from '@/views/Admin/Users/UsersListView.vue'
+import EditUserView from '@/views/Admin/Users/EditUserView.vue'
 
 //Guards
 import guest from '@/guards/guestGuard'
 import user from '@/guards/userGuard'
 import checkout from '@/guards/checkoutGuard'
+import packageGuard from '@/guards/Before/packageGuard'
+import moduleGuard from '@/guards/Before/moduleGuard'
+import editUserGuard from '@/guards/Before/EditUserGuard'
 
 const routes = [
   // {
@@ -147,8 +160,39 @@ const routes = [
         component : CreateModuleView
       },
       {
+        path : 'modules/list',
+        component : ModulesListView
+      },
+      {
+        path : 'module/edit/:id',
+        component : EditModuleView,
+        beforeEnter : moduleGuard
+      },
+      {
         path : 'package/create',
         component : CreatePackageView
+      },
+      {
+        path : 'packages/list',
+        component : PackagesListView
+      },
+      {
+        path : 'package/edit/:id',
+        component : EditPackageView,
+        beforeEnter : packageGuard
+      },
+      {
+        path : 'users/list',
+        component : UsersListView
+      },
+      {
+        path : 'user/create',
+        component : CreateUserView
+      },
+      {
+        path : 'user/edit/:id',
+        component : EditUserView,
+        beforeEnter : editUserGuard
       },
     ]
   }

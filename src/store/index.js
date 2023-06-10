@@ -7,6 +7,7 @@ import cartModule from './cart/index'
 import reviewModule from './review/index'
 import favoriteModule from './favorite/index'
 import orderModule from './order/index'
+import userModule from './user/index'
 
 export default createStore({
   modules: {
@@ -17,6 +18,7 @@ export default createStore({
     cartModule, 
     reviewModule, 
     favoriteModule, 
-    orderModule
+    orderModule,
+    userModule
   }
 })

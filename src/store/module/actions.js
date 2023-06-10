@@ -85,6 +85,69 @@ const moduleActions = {
         }catch(err){
             commit('setSuccess', false)
         }
+    },
+    async editModule({ commit, rootGetters  }, payload){
+        try{
+            const accessToken = rootGetters['authModule/getToken']
+            await axios.patch(`${process.env.VUE_APP_BASE_URL}/modules/${payload.id}`, payload.module, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+            
+            let form = new FormData()
+            for(let i=0; i<payload.images.length; i++){
+
+                form = new FormData()
+                form.append('url', payload.images[i])
+                form.append('isposter', 0)
+                form.append('modele_id', payload.id)
+                
+                await axios.post(`${process.env.VUE_APP_BASE_URL}/moduleimage`, form, {
+                    headers : {
+                        'Accept': 'application/vnd.api+json',
+                        'Content-Type': 'application/vnd.api+json',
+                        'Authorization': `Bearer ${accessToken}`,
+                    }
+                })
+            }
+
+            for(let i=0; i<payload.deleted.length; i++){                
+                await axios.delete(`${process.env.VUE_APP_BASE_URL}/moduleimage/${payload.deleted[i]}`, {
+                    headers : {
+                        'Accept': 'application/vnd.api+json',
+                        'Content-Type': 'application/vnd.api+json',
+                        'Authorization': `Bearer ${accessToken}`,
+                    }
+                })
+            }
+
+            commit('setSuccess', true)
+        }catch(err){
+            commit('setSuccess', false)
+        }
+    },
+    async deleteModule({state, commit,rootGetters},payload){
+        try{
+            const accessToken = rootGetters['authModule/getToken']
+            await axios.delete(`${process.env.VUE_APP_BASE_URL}/modules/${payload}`, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+
+            let index = state.data.findIndex(item => item.id == payload)
+            if(index >= 0){
+                state.data.splice(index, 1)
+            }
+            commit('setDelete', true)
+        }catch(err){
+            commit('setDelete', false)
+        }
     }
 }
 

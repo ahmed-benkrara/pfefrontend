@@ -7,7 +7,7 @@
         <div class="container-fluid">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title fw-semibold mb-4">Create Module</h5>
+              <h5 class="card-title fw-semibold mb-4">Edit Module</h5>
               <div class="card">
                 <div class="card-body">
                 
@@ -16,9 +16,22 @@
                       <input type="file" @change="handleImages($event)" multiple accept="image/*" class="form-control" id="image">
                     </div>
                     <div class="mb-3 flex flex-wrap">
-                        <div v-for="item in images" :key="item.name">
-                            <img class="w-[100px] mb-2 mr-2 h-[80px] rounded object-cover" :src="getImageUrl(item)" alt="">
+                        <div v-for="(item, index) in images" :key="item.name">
+                            <div class="relative">
+                                <img class="w-[100px] mb-2 mr-2 h-[80px] rounded object-cover proimage" :src="getImageUrl(item)" alt="">
+                                <div @click="removeImg(index)" class="flex items-center cursor-pointer justify-center rounded-full w-[15px] h-[15px] bg-white absolute top-[2px] pt-[0px] right-[10px]">
+                                    <i class="fa-solid fa-xmark text-[black] text-[10px] block"></i>
+                                </div>
+                            </div>
                         </div>
+                        <div v-for="item in getModuleData != null ? getModuleData.relationships.images : []" :key="item.id">
+                            <div class="relative">
+                                <img class="w-[100px] mb-2 mr-2 h-[80px] rounded object-cover proimage" :src="item.url" alt="">
+                                <div @click="deleteImg(item.id, $event)" class="flex items-center cursor-pointer justify-center rounded-full w-[15px] h-[15px] bg-white absolute top-[2px] pt-[0px] right-[10px]">
+                                    <i class="fa-solid fa-xmark text-[black] text-[10px] block"></i>
+                                </div>
+                            </div>
+                        </div>                        
                     </div>
                     <div class="mb-3">
                       <label for="name" class="form-label">Module Title</label>
@@ -30,10 +43,10 @@
                     </div>
                     <div class="mb-3">
                       <label for="package" class="form-label">Package</label>
-                      <!-- <input type="text" min="0" class="form-control" id="package"> -->
                         <select id="package" class="form-select">
-                          <option selected disabled value="">Select a package</option>
-                          <option v-for="item in getData" :key="item.id" :value="item.id">{{ item.name }}</option>
+                            <option selected disabled value="">Select a package</option>
+                            <option value="none">None</option>
+                            <option v-for="item in getData" :key="item.id" :value="item.id" :selected="getModuleData.relationships.package != null && item.id == getModuleData.relationships.package.id ? true : false">{{ item.name }}</option>
                         </select>
                       <div id="emailHelp" class="form-text">It's optional, if module has no package leave it empty.</div>
                     </div>
@@ -58,20 +71,22 @@ import HeaderAdmin from '@/components/admin/HeaderAdmin.vue'
 import { mapGetters, mapActions, mapMutations } from 'vuex'
 
 export default {
-    name : 'CreateModuleView',
+    name : 'EditModuleView',
     data(){
         return{
             images : [],
+            deleted : [],
             data : {
                 name : '',
                 price : '',
                 description : '',
                 package_id : '',
-            }
+            },
+            id : 0
         }
     },
     computed : {
-        ...mapGetters('moduleModule', ['getSuccess']),
+        ...mapGetters('moduleModule', ['getSuccess', 'getModuleSuccess', 'getModuleData']),
         ...mapGetters('packageModule',['getData'])
     },
     watch : {
@@ -86,17 +101,18 @@ export default {
 
                 this.images = []
                 document.getElementById('image').value = ''
-                alert('Module created successfully')
+                alert('Module updated successfully')
                 this.setSuccess(null)
+                this.$router.push('/admin/modules/list')
             }else if(value == false){
                 alert('Something went wrong please try again later')
                 this.setSuccess(null)
             }
-        }
+        },
     },
     methods : {
-        ...mapActions('moduleModule', ['postModule']),
-        ...mapMutations('moduleModule', ['setSuccess']),
+        ...mapActions('moduleModule', ['editModule', 'getModule']),
+        ...mapMutations('moduleModule', ['setSuccess', 'setModuleSuccess']),
         ...mapActions('packageModule',['getPackages']),
         handleImages(file){
             this.images.push(file.target.files[0])
@@ -107,11 +123,12 @@ export default {
         send(){
             if(this.validation()){
                 let final = {
+                    id : this.id,
                     module : this.data,
-                    images : this.images
+                    images : this.images,
+                    deleted : this.deleted
                 }
-
-                this.postModule(final)
+                this.editModule(final)
             }
         },
         validation(){
@@ -121,8 +138,18 @@ export default {
             let description = document.getElementById('description') 
 
             if(this.images.length == 0){
-                this.errorStyle(image, 'A module should have at least 1 image !', true)
-                return
+                if(this.deleted.length == 0){
+                    this.errorStyle(image, '', false) 
+                }
+
+                if(this.deleted.length > 0){
+                    if(this.deleted.length < this.getModuleData.relationships.images.length){
+                        this.errorStyle(image, '', false)
+                    }else{
+                        this.errorStyle(image, 'A module should have at least 1 image !', true)
+                        return
+                    }
+                }
             }else{
                 this.errorStyle(image, '', false)
             }
@@ -141,7 +168,7 @@ export default {
                 this.errorStyle(price, '', false)
             }
             
-            if(document.getElementById('package').value == '' || document.getElementById('package').value == null){
+            if(document.getElementById('package').value == '' || document.getElementById('package').value == null || document.getElementById('package').value == 'none'){
                 this.data.package_id = null
             }else{
                 this.data.package_id = document.getElementById('package').value
@@ -164,11 +191,18 @@ export default {
                 e.classList.remove('error')
                 e.removeAttribute('title')
             }
+        },
+        deleteImg(id, e){
+            this.deleted.push(id)
+            e.currentTarget.parentElement.classList.add('hidden')
+        },
+        removeImg(index){
+            this.images.splice(index,1)
         }
     },
     mounted(){
         useHead({
-            title: `Create Module | ${process.env.VUE_APP_TITLE}`,
+            title: `Update Module | ${process.env.VUE_APP_TITLE}`,
             meta: [
                 {
                 name: 'description',
@@ -176,6 +210,12 @@ export default {
                 },
             ],
         })
+        this.id = this.getModuleData.id
+        this.data.name = this.getModuleData.name
+        this.data.price = this.getModuleData.price
+        this.data.description = this.getModuleData.description
+        this.data.package_id = this.getModuleData.relationships.package != null ? this.getModuleData.relationships.package.id : null
+        this.setSuccess(null)
         this.getPackages()
     },
     components : {
@@ -193,4 +233,5 @@ export default {
     .error{
         @apply border-[red];
     }
+
 </style>

@@ -19,6 +19,9 @@ const moduleMutations = {
     },
     setModuleSuccess(state, payload){
         state.module.success = payload
+    },
+    setDelete(state, payload){
+        state.delete = payload
     }
 }
 

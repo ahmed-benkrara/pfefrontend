@@ -19,6 +19,9 @@ const packageGetters = {
     },
     getPackageSuccess(state){
         return state.package.success 
+    },
+    getDelete(state){
+        return state.delete
     }
 }
 

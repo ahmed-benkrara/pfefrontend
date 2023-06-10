@@ -143,7 +143,6 @@ export default {
         Swiper, SwiperSlide, ProductReviews
     },
     async beforeEnter(to, from, next){
-        console.log('here')
         try{
             await this.getModule(this.$route.params.id)
             if(this.getModuleSuccess == false){

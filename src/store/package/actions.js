@@ -64,6 +64,41 @@ const packageActions = {
         }catch(err){
             commit('setSuccess', false)
         }
+    },
+    async editPackage({ rootGetters, commit }, payload){
+        try{
+            const accessToken = rootGetters['authModule/getToken']
+            await axios.patch(`${process.env.VUE_APP_BASE_URL}/packages/${payload.id}`, payload.data, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+            commit('setSuccess', true)
+        }catch(err){
+            commit('setSuccess', false)
+        }
+    },
+    async deletePackage({state, commit, rootGetters}, payload){
+        try{
+            const accessToken = rootGetters['authModule/getToken']
+            await axios.delete(`${process.env.VUE_APP_BASE_URL}/packages/${payload}`, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+
+            let index = state.data.findIndex(item => item.id == payload)
+            if(index >= 0){
+                state.data.splice(index, 1)
+            }
+            commit('setDelete', true)
+        }catch(err){
+            commit('setDelete', false)
+        }
     }
 }
 

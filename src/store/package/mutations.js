@@ -19,6 +19,9 @@ const packageMutations = {
     },
     setPackageSuccess(state, payload){
         state.package.success = payload
+    },
+    setDelete(state, payload){
+        state.delete = payload
     }
 }
 

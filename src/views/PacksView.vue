@@ -164,12 +164,12 @@
                     
                         <div class="w-full h-fit" :class="{padding : true}" v-for="item in displayedItems" :key="item">
                             <div class="relative" >
-                                <router-link :to="`/module/${item.id}/${slug(item.name)}`">
+                                <router-link :to="`/package/${item.id}/${slug(item.name)}`">
                                     <img :class="getImageClasses" :src="item.relationships.modules[0].images[0].url" alt="">
                                 </router-link>
                             </div>
                             <div class="mt-[10px]">
-                                <router-link :to="`/module/${item.id}/${slug(item.name)}`">
+                                <router-link :to="`/package/${item.id}/${slug(item.name)}`">
                                     <h3 class="text-[12px] leading-[19px] tracking-[0.21px] font-ibm text-[#434343] text-center font-[300]">{{ item.name.length <= 20 ? item.name : item.name.slice(0,20).concat("...") }}</h3>
                                 </router-link>
                                 <p class="text-[12.8px] font-ibm text-[#fa363a] text-center font-[700]">${{ item.price }}</p>
