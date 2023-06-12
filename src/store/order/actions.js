@@ -61,6 +61,38 @@ const orderActions = {
         }catch(err){
             commit('setSuccess', false)
         }
+    },
+    async readOrders({rootGetters, commit }){
+        try{
+            const token = rootGetters['authModule/getToken']
+            const response = await axios.get(`${process.env.VUE_APP_BASE_URL}/orders`, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+            commit('setData', response.data.data)
+            commit('setLoading', true)
+        }catch(err){
+            commit('setLoading', false)
+        }
+    },
+    async orderById({ rootGetters, commit },payload){
+        try{
+            const token = rootGetters['authModule/getToken']
+            const response = await axios.get(`${process.env.VUE_APP_BASE_URL}/orders/${payload}`, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${token}`,
+                }
+            })
+
+            commit('setOrder', response.data.data)
+        }catch(err){
+            commit('setOrder', null)
+        }
     }
 }
 

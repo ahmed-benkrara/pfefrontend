@@ -5,7 +5,10 @@ import orderActions from './actions'
 const orderModule = {
     namespaced : true,
     state : {
-        success : ''
+        success : '',
+        data : null,
+        loading : null,
+        order : null
     },
     getters: orderGetters,
     mutations: orderMutations,

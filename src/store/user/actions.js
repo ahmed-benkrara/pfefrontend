@@ -67,6 +67,22 @@ const userActions = {
             commit('setUserSuccess', false)
         }
     },
+    async countUsers({ rootGetters, commit }){
+        try{
+            const accessToken = rootGetters['authModule/getToken']
+            const response = await axios.get(`${process.env.VUE_APP_BASE_URL}/users/count`, {
+                headers : {
+                    'Accept': 'application/vnd.api+json',
+                    'Content-Type': 'application/vnd.api+json',
+                    'Authorization': `Bearer ${accessToken}`,
+                }
+            })
+            commit('setUserCount', response.data.data)
+            commit('setUserCountSuccess', true)
+        }catch(err){
+            commit('setUserCountSuccess', false)
+        }
+    }
 }
 
 export default userActions

@@ -34,6 +34,10 @@ import CreateUserView from '@/views/Admin/Users/CreateUserView.vue'
 import UsersListView from '@/views/Admin/Users/UsersListView.vue'
 import EditUserView from '@/views/Admin/Users/EditUserView.vue'
 
+import OrdersListView from '@/views/Admin/Orders/OrdersListView.vue'
+import OrderDetailsView from '@/views/Admin/Orders/OrderDetailsView.vue'
+
+
 //Guards
 import guest from '@/guards/guestGuard'
 import user from '@/guards/userGuard'
@@ -41,6 +45,7 @@ import checkout from '@/guards/checkoutGuard'
 import packageGuard from '@/guards/Before/packageGuard'
 import moduleGuard from '@/guards/Before/moduleGuard'
 import editUserGuard from '@/guards/Before/EditUserGuard'
+import orderGuard from '@/guards/Before/OrderGuard'
 
 const routes = [
   // {
@@ -193,6 +198,15 @@ const routes = [
         path : 'user/edit/:id',
         component : EditUserView,
         beforeEnter : editUserGuard
+      },
+      {
+        path : 'orders/list',
+        component : OrdersListView
+      },
+      {
+        path : 'order/:id',
+        component : OrderDetailsView,
+        beforeEnter : orderGuard
       },
     ]
   }

@@ -64,21 +64,21 @@ const moduleActions = {
             })
             
             const module_id = response.data.data.id
-            let form = new FormData()
             for(let i=0; i<payload.images.length; i++){
-
-                form = new FormData()
+                let form = new FormData()
                 form.append('url', payload.images[i])
                 form.append('isposter', 0)
                 form.append('modele_id', module_id)
+                // console.log(form.get('url'))
                 
-                await axios.post(`${process.env.VUE_APP_BASE_URL}/moduleimage`, form, {
+                const res = await axios.post(`${process.env.VUE_APP_BASE_URL}/moduleimage`, form, {
                     headers : {
                         'Accept': 'application/vnd.api+json',
                         'Content-Type': 'application/vnd.api+json',
                         'Authorization': `Bearer ${accessToken}`,
                     }
                 })
+                console.log(res)
             }
 
             commit('setSuccess', true)

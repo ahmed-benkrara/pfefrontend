@@ -10,6 +10,12 @@ const userGetters = {
     },
     getSuccess(state){
         return state.success
+    },
+    getUserCountSuccess(state){
+        return state.countSuccess
+    },
+    getUserCount(state){
+        return state.count
     }
 }
 

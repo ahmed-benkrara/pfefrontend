@@ -99,7 +99,12 @@ export default {
         ...mapMutations('moduleModule', ['setSuccess']),
         ...mapActions('packageModule',['getPackages']),
         handleImages(file){
-            this.images.push(file.target.files[0])
+            if(Math.round((file.target.files[0].size) / 1024 >= 4096)){
+                alert('File size is too big, max size is 10MB !')
+            }else{
+                console.log(file.currentTarget.files[0].size)
+                this.images.push(file.target.files[0])
+            }
         },
         getImageUrl(file){
             return URL.createObjectURL(file)
@@ -110,7 +115,7 @@ export default {
                     module : this.data,
                     images : this.images
                 }
-
+                console.log(final)
                 this.postModule(final)
             }
         },

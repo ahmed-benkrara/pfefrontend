@@ -10,7 +10,7 @@
                 <input id="lname" type="text" v-model="data.lname" placeholder="Last Name" class="bg-[#fafafa] text-[15px] outline-none px-4 py-[10px] border w-full block mb-4">
                 <input id="email" type="text" v-model="data.email" placeholder="Email" class="bg-[#fafafa] text-[15px] outline-none px-4 py-[10px] border w-full block mb-4">
                 <input id="phone" type="text" v-model="data.phone" placeholder="Phone" class="bg-[#fafafa] text-[15px] outline-none px-4 py-[10px] border w-full block mb-4">
-                <textarea id="address" placeholder="Address" :value="data.address" class="bg-[#fafafa] resize-none text-[15px] outline-none px-4 py-[14px] h-[150px] border w-full block mb-4"></textarea>
+                <textarea id="address" placeholder="Address" v-model="data.address" class="bg-[#fafafa] resize-none text-[15px] outline-none px-4 py-[14px] h-[150px] border w-full block mb-4"></textarea>
                 <button @click="send()" class="text-white bg-black font-[300] text-[14px] px-[40px] py-2">Save</button>
             </div>
         </div>
@@ -19,7 +19,7 @@
 
 <script>
 import { useHead } from '@vueuse/head'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions, mapMutations } from 'vuex'
 import validator from 'validator'
 
 export default  {
@@ -30,18 +30,26 @@ export default  {
         }
     },
     computed : {
-        ...mapGetters('authModule',['getUser'])
+        ...mapGetters('authModule',['getUser', 'getUpdate'])
     },
     watch : {
         getUser(value){
             if(value == null){
                 window.location.reload()
             }
-            alert('updated successfully')
+        },
+        getUpdate(value){
+            if(value == true){
+                alert('updated successfully')
+                this.setUpdate(null)
+            }else if(value == false){
+                this.setUpdate(null)
+            }
         }
     },
     methods : {
         ...mapActions('authModule',['updateUser']),
+        ...mapMutations('authModule',['setUpdate']),
         send(){
             if(this.validation()){
                 this.updateUser(this.data)

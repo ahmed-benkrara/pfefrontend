@@ -11,7 +11,9 @@ const userModule = {
             data : null,
             success : ''
         },
-        delete : ''
+        delete : '',
+        count : 0,
+        countSuccess : null
     },
     getters : userGetters,
     mutations : userMutations,

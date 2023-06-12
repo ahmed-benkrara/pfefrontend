@@ -18,7 +18,8 @@ const authModule = {
             success : null
         },
         user : null,
-        password : ''
+        password : '',
+        update : null
     },
     getters: authGetters,
     mutations: authMutations,

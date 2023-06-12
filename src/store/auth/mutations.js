@@ -34,6 +34,9 @@ const authMutations = {
     },
     setPassword(state, payload){
         state.password = payload
+    },
+    setUpdate(state, payload){
+        state.update = payload
     }
 }
 

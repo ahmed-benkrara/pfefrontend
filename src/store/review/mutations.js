@@ -10,6 +10,12 @@ const reviewMutations = {
     },
     setSuccess(state, payload){
         state.success = payload
+    },
+    setCountSuccess(state, payload){
+        state.countSuccess = payload
+    },
+    setCount(state, payload){
+        state.count = payload
     }
 }
 

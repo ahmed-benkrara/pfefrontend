@@ -14,7 +14,9 @@ const reviewModule = {
         },
         loading : false,
         error : '',
-        success : false
+        success : false,
+        countSuccess : null,
+        count : 0
     },
     getters: reviewGetters,
     mutations: reviewMutations,

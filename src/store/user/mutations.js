@@ -10,6 +10,12 @@ const userMutations = {
     },
     setSuccess(state, payload){
         state.success = payload 
+    },
+    setUserCountSuccess(state, payload){
+        state.countSuccess = payload
+    },
+    setUserCount(state, payload){
+        state.count = payload
     }
 }
 

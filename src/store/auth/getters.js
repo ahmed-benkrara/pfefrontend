@@ -22,6 +22,9 @@ const authGetters = {
     },
     getPassword(state){
         return state.password
+    },
+    getUpdate(state){
+        return state.update
     }
 }
 

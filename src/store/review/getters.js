@@ -7,6 +7,12 @@ const reviewGetters = {
     },
     getSuccess(state){
         return state.success
+    },
+    getCountSuccess(state){
+        return state.countSuccess
+    },
+    getCount(state){
+        return state.count
     }
 }
 

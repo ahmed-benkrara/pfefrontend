@@ -78,7 +78,7 @@ const authActions = {
             commit('setRegisterSuccess', false)
         }
     },
-    async updateUser({ dispatch, getters }, payload){
+    async updateUser({ dispatch, getters, commit }, payload){
         try{
             await axios.patch(`${process.env.VUE_APP_BASE_URL}/user/${payload.id}`, { fname : payload.fname, lname : payload.lname, email : payload.email }, {
                 headers : {
@@ -89,7 +89,7 @@ const authActions = {
             })
             
             try{
-                await axios.post(`${process.env.VUE_APP_BASE_URL}/user/${payload.id}`, { phone : payload.phone, address : payload.address, _method : 'PATCH' }, {
+                await axios.post(`${process.env.VUE_APP_BASE_URL}/clientdetails/${payload.id}`, { phone : payload.phone, address : payload.address, _method : 'PATCH' }, {
                     headers : {
                         'Accept': 'application/vnd.api+json',
                         'Content-Type': 'application/vnd.api+json',
@@ -100,8 +100,9 @@ const authActions = {
                 console.log(err)
             }
             dispatch('userRoleByToken')
+            commit('setUpdate', true)
         }catch(err){
-            console.log(err)
+            commit('setUpdate', false)
         }
     },
     async updatePassword({ commit, getters } ,payload){
