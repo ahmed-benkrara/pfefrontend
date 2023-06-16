@@ -8,6 +8,7 @@ import reviewModule from './review/index'
 import favoriteModule from './favorite/index'
 import orderModule from './order/index'
 import userModule from './user/index'
+import settingsModule from './settings/index'
 
 export default createStore({
   modules: {
@@ -19,6 +20,7 @@ export default createStore({
     reviewModule, 
     favoriteModule, 
     orderModule,
-    userModule
+    userModule,
+    settingsModule
   }
 })

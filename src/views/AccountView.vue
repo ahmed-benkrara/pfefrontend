@@ -11,9 +11,9 @@
                     <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
                         <router-link to="/account/password"><i class="fa-solid fa-gear text-[18px] mr-2"></i> Settings</router-link>
                     </li>
-                    <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
+                    <!-- <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
                         <i class="fa-solid fa-bag-shopping text-[18px] mr-2"></i> My Orders
-                    </li>
+                    </li> -->
                     <li class="py-2 px-4 font-[500] text-[14px] text-[gray] hover:text-black cursor-pointer rounded mb-2">
                         <router-link to="/account/favorite"><i class="fa-solid fa-heart text-[18px] mr-2"></i> My Favorite</router-link>
                     </li>

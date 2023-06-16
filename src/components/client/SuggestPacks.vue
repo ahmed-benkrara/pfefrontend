@@ -1,6 +1,6 @@
 <template>
     <div class="mt-[20px] px-4 py-8">
-        <h1 class="font-inter font-semibold sm:text-[24px] sm:mb-3 md:text-[20px]" v-if="ready && data.length > 0">Top Modules</h1>
+        <h1 class="font-inter font-semibold sm:text-[24px] sm:mb-3 md:text-[20px]" v-if="ready && data.length > 0">Top Packs</h1>
         <div class="w-full md:px-8" v-if="ready">
             <swiper
                 :slidesPerView="slidesPerView"

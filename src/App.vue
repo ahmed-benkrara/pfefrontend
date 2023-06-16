@@ -8,7 +8,8 @@ import { mapActions } from 'vuex'
 export default {
   methods: {
     ...mapActions('authModule',['tokenFromLocalStorage']),
-    ...mapActions('cartModule',['readLocal', 'readData'])
+    ...mapActions('cartModule',['readLocal', 'readData']),
+    ...mapActions('settingsModule', ['loadSettings']),
   },
   created(){
     // this.tokenFromLocalStorage()
@@ -23,6 +24,7 @@ export default {
     this.tokenFromLocalStorage()
     this.readLocal()
     this.readData()
+    this.loadSettings()
   },
   beforeRouteEnter(to, from, next) {
     this.readData()

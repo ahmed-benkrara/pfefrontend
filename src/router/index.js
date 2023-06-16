@@ -36,11 +36,14 @@ import EditUserView from '@/views/Admin/Users/EditUserView.vue'
 
 import OrdersListView from '@/views/Admin/Orders/OrdersListView.vue'
 import OrderDetailsView from '@/views/Admin/Orders/OrderDetailsView.vue'
+import ProfileView from '@/views/Admin/ProfileView.vue'
+import SettingsView from '@/views/Admin/SettingsView.vue'
 
 
 //Guards
 import guest from '@/guards/guestGuard'
 import user from '@/guards/userGuard'
+import admin from '@/guards/adminGuard'
 import checkout from '@/guards/checkoutGuard'
 import packageGuard from '@/guards/Before/packageGuard'
 import moduleGuard from '@/guards/Before/moduleGuard'
@@ -155,6 +158,7 @@ const routes = [
     path: '/admin',
     name: 'adminmain',
     component: MainAdminView,
+    beforeEnter : admin,
     children : [
       {
         path : 'dashboard',
@@ -207,6 +211,14 @@ const routes = [
         path : 'order/:id',
         component : OrderDetailsView,
         beforeEnter : orderGuard
+      },
+      {
+        path : 'profile',
+        component : ProfileView
+      },
+      {
+        path : 'settings',
+        component : SettingsView
       },
     ]
   }
