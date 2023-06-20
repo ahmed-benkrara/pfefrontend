@@ -7,9 +7,9 @@
         <div class="container-fluid">
             <div class="card w-100">
               <div class="card-body p-4">
-                <h5 class="card-title fw-semibold mb-4">Orders List</h5>
+                <h5 class="card-title fw-semibold mb-4">Packages List</h5>
                 <div class="mb-4 mt-10 flex items-center">
-                      <label for="name" class="form-label mr-4">Order Number</label>
+                      <label for="name" class="form-label mr-4">Package Title</label>
                       <input v-model="searchQuery" type="text" class="form-control searchbox" id="name">
                       <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
                     </div>
@@ -63,6 +63,9 @@
                 </div>
               </div>
             </div>
+        </div>
+        <div class="py-6 px-6 text-center">
+          <p class="mb-0 fs-4">2022 - 2023 © ProVisionX . All rights Reserved</p>
         </div>
       </div>
     </div>
